@@ -38,6 +38,7 @@ npm run preview  # sirve dist/ localmente
 
 ```text
 pevlyn-start/
+├── vercel.json                  Config de despliegue (ver "Despliegue")
 ├── docs/                        Especificación y contexto de marca
 ├── logo/                        Logo oficial original (fuente de los assets)
 └── frontend/
@@ -151,23 +152,35 @@ lo sea (§15, §23, §36). En consecuencia:
 
 ## Despliegue en Vercel
 
-La app vive en `frontend/`, no en la raíz del repo. Ese es el único ajuste que
-Vercel no puede adivinar:
+La app vive en `frontend/`, no en la raíz del repo. Eso importa más de lo que
+parece, porque **un deployment puede completar con éxito y aun así servir un
+404**: si Vercel toma la raíz como directorio del proyecto, no encuentra nada
+que compilar, publica los archivos tal cual, y como en la raíz no hay
+`index.html`, la web responde `404 NOT_FOUND`.
 
-**Root Directory → `frontend`**
+El repo trae dos `vercel.json` para que funcione con cualquiera de las dos
+configuraciones posibles. Vercel lee **solo** el que está en el *Root
+Directory* del proyecto:
 
-Con eso, Vercel detecta Vite automáticamente y usa `npm run build` con salida
-en `dist`. `frontend/vercel.json` añade el `Content-Type` correcto del
-webmanifest y las cabeceras de caché de los assets.
+| Root Directory del proyecto | Archivo que se usa     | Qué hace                                                |
+| --------------------------- | ---------------------- | ------------------------------------------------------- |
+| Raíz del repo (por defecto) | `vercel.json`          | Compila dentro de `frontend/` y publica `frontend/dist`. |
+| `frontend`                  | `frontend/vercel.json` | Preset de Vite; Vercel detecta el build solo.            |
+
+Ambos aplican las mismas cabeceras: `Content-Type` del webmanifest y caché de
+assets e iconos.
 
 ### Opción A — Integración con Git (recomendada)
 
 1. En Vercel: **Add New → Project** e importa `pedrodevpy/pevlyn-start`.
-2. En **Root Directory** pulsa *Edit* y selecciona `frontend`.
-3. Deja el resto como viene (Framework: Vite) y despliega.
+2. Despliega sin tocar nada: el `vercel.json` de la raíz ya indica dónde está
+   la app.
 
-Cada push a `main` publica a producción, y cada PR genera su propia preview
-URL. No hace falta ningún token.
+Cada push a `main` publica a producción y cada PR genera su preview URL. No
+hace falta ningún token.
+
+> Alternativa: poner el Root Directory en `frontend` desde *Settings → General
+> → Root Directory*. Es igual de válido y no depende del `vercel.json` raíz.
 
 ### Opción B — CLI
 
@@ -179,6 +192,13 @@ npx vercel --prod
 
 La primera ejecución pregunta por el directorio del proyecto: responde `.`
 estando ya dentro de `frontend`.
+
+### Si la web responde 404
+
+Casi siempre es el Root Directory. Míralo en *Settings → General → Root
+Directory*, y revisa el log del build: si no aparece ninguna línea de Vite
+(`vite build`, `dist/assets/…`), no se compiló nada y se están sirviendo los
+archivos del repo en crudo.
 
 ### Antes del primer despliegue a producción
 
