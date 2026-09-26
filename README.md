@@ -67,22 +67,32 @@ La especificación prohíbe publicar datos de contacto inventados (§27, §36),
 así que los canales siguen siendo placeholders:
 
 ```js
-export const WHATSAPP_NUMBER = 'REPLACE_WITH_OFFICIAL_NUMBER'
+export const WHATSAPP_NUMBER = '573163423228'            // ✅ configurado
 export const CONTACT_EMAIL   = 'REPLACE_WITH_OFFICIAL_EMAIL'
 export const SITE_URL        = 'REPLACE_WITH_OFFICIAL_DOMAIN'
 ```
 
 El código se adapta solo al estado de estos valores:
 
-| Estado                              | Comportamiento                                                        |
-| ----------------------------------- | --------------------------------------------------------------------- |
-| Sin configurar (actual)             | Los CTA de WhatsApp llevan al formulario. El formulario valida y avisa de que los canales se están configurando. |
-| `WHATSAPP_NUMBER` definido          | Los CTA abren `wa.me` y el formulario envía el lead por WhatsApp.      |
-| Solo `CONTACT_EMAIL` definido       | El formulario envía el lead por `mailto`.                             |
+| Estado                        | Comportamiento                                                   |
+| ----------------------------- | ---------------------------------------------------------------- |
+| `WHATSAPP_NUMBER` definido    | **Actual.** Los CTA abren `wa.me` y el formulario envía el lead por WhatsApp. |
+| Solo `CONTACT_EMAIL` definido | El formulario envía el lead por `mailto`.                        |
+| Ninguno definido              | Los CTA llevan al formulario, que valida y avisa de que los canales se están configurando. |
 
-> Para poner la landing en producción basta con sustituir `WHATSAPP_NUMBER`
-> por el número oficial en formato internacional y solo dígitos
-> (p. ej. `573001234567`). No hace falta tocar ningún componente.
+Con WhatsApp activo, al enviar el formulario se abre una conversación contigo
+con el lead ya redactado:
+
+```text
+Hola PEVLYN, quiero digitalizar mi negocio.
+
+Nombre: Ana Torres
+Negocio: Barbería Central
+WhatsApp: 300 123 4567
+Correo: ana@ejemplo.com
+Tipo de negocio: Barbería
+Necesito: Agenda de citas
+```
 
 **Pendiente al publicar el dominio:** `index.html` deja `og:url` fuera y
 `og:image` como ruta relativa. Cuando exista el dominio oficial, conviene
@@ -172,12 +182,12 @@ estando ya dentro de `frontend`.
 
 ### Antes del primer despliegue a producción
 
-Conviene resolver los dos pendientes de la sección anterior: sin
-`WHATSAPP_NUMBER` los CTA de WhatsApp llevan al formulario y el formulario no
-entrega el lead a ningún sitio. Para una preview no es problema.
+La captación de leads ya funciona: `WHATSAPP_NUMBER` está configurado, así que
+los CTA y el formulario entregan el lead por WhatsApp.
 
-Una vez tengas el dominio, pásalo a `SITE_URL` en `src/config/site.js` y
-convierte `og:url` y `og:image` a URL absolutas en `index.html`.
+Queda solo el dominio: cuando lo tengas, pásalo a `SITE_URL` en
+`src/config/site.js` y convierte `og:url` y `og:image` a URL absolutas en
+`index.html` para que las previsualizaciones en redes funcionen.
 
 ---
 
@@ -201,9 +211,6 @@ Comprobado con Chromium sobre el build de producción:
 
 ## Estado según los criterios de aceptación (§37)
 
-Todos los puntos de la lista de la especificación están cubiertos, con estas
-dos salvedades, ambas a la espera de datos oficiales y no de código:
-
-- Los CTA de WhatsApp y el envío del formulario quedan activos en cuanto se
-  defina `WHATSAPP_NUMBER`.
-- Las URL absolutas de Open Graph quedan pendientes del dominio.
+Todos los puntos de la lista de la especificación están cubiertos. Queda una
+sola salvedad, a la espera de un dato oficial y no de código: las URL
+absolutas de Open Graph dependen del dominio.

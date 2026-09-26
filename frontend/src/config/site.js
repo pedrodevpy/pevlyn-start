@@ -4,14 +4,16 @@
  * Punto único de verdad para datos de contacto y metadatos.
  *
  * ⚠️ IMPORTANTE (LANDING_DEVELOPMENT.md §27 y §36):
- * No se deben publicar números, correos ni redes sociales inventados.
- * Los valores siguen siendo placeholders hasta que existan canales oficiales.
- * Mientras un canal no esté configurado, la UI lo oculta automáticamente y
- * redirige al formulario de contacto: no se renderizan enlaces rotos ni falsos.
+ * No se deben publicar números, correos ni redes sociales inventados. Los
+ * canales que aún no existen se dejan como placeholder `REPLACE_WITH_*`: la
+ * UI los detecta y redirige al formulario de contacto, de modo que nunca se
+ * renderiza un enlace roto ni un dato falso.
+ *
+ * WhatsApp ya está configurado con el número oficial; correo y dominio no.
  */
 
 /** Número oficial de WhatsApp en formato internacional, solo dígitos (ej: "573001234567"). */
-export const WHATSAPP_NUMBER = 'REPLACE_WITH_OFFICIAL_NUMBER'
+export const WHATSAPP_NUMBER = '573163423228'
 
 /** Correo oficial de contacto (ej: "hola@pevlyn.com"). */
 export const CONTACT_EMAIL = 'REPLACE_WITH_OFFICIAL_EMAIL'
