@@ -139,6 +139,48 @@ lo sea (§15, §23, §36). En consecuencia:
 
 ---
 
+## Despliegue en Vercel
+
+La app vive en `frontend/`, no en la raíz del repo. Ese es el único ajuste que
+Vercel no puede adivinar:
+
+**Root Directory → `frontend`**
+
+Con eso, Vercel detecta Vite automáticamente y usa `npm run build` con salida
+en `dist`. `frontend/vercel.json` añade el `Content-Type` correcto del
+webmanifest y las cabeceras de caché de los assets.
+
+### Opción A — Integración con Git (recomendada)
+
+1. En Vercel: **Add New → Project** e importa `pedrodevpy/pevlyn-start`.
+2. En **Root Directory** pulsa *Edit* y selecciona `frontend`.
+3. Deja el resto como viene (Framework: Vite) y despliega.
+
+Cada push a `main` publica a producción, y cada PR genera su propia preview
+URL. No hace falta ningún token.
+
+### Opción B — CLI
+
+```bash
+cd frontend
+npx vercel login
+npx vercel --prod
+```
+
+La primera ejecución pregunta por el directorio del proyecto: responde `.`
+estando ya dentro de `frontend`.
+
+### Antes del primer despliegue a producción
+
+Conviene resolver los dos pendientes de la sección anterior: sin
+`WHATSAPP_NUMBER` los CTA de WhatsApp llevan al formulario y el formulario no
+entrega el lead a ningún sitio. Para una preview no es problema.
+
+Una vez tengas el dominio, pásalo a `SITE_URL` en `src/config/site.js` y
+convierte `og:url` y `og:image` a URL absolutas en `index.html`.
+
+---
+
 ## Verificación
 
 Comprobado con Chromium sobre el build de producción:
