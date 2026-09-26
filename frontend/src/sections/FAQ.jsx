@@ -4,7 +4,7 @@ import Reveal from '../components/Reveal.jsx'
 import FAQItem from '../components/FAQItem.jsx'
 import { faqItems } from '../data/faq.js'
 
-/** Preguntas frecuentes (§24). */
+/** Preguntas frecuentes. */
 export default function FAQ() {
   return (
     <Section id="faq" labelledBy="faq-title">

@@ -1,13 +1,13 @@
 /**
- * Ecosistema PEVLYN (contexto general §6).
+ * Ecosistema PEVLYN.
  *
- * Solo PEVLYN Web está disponible hoy. El resto se marca explícitamente
- * como "Próximamente" para no presentar como real un producto que aún no
- * existe (LANDING_DEVELOPMENT.md §36).
+ * ⚠️ Solo PEVLYN Web está disponible hoy. El resto se marca explícitamente
+ * como "Próximamente": son la hoja de ruta del producto, no algo que se
+ * pueda contratar ahora mismo.
  */
 export const products = [
-  { name: 'PEVLYN Web', description: 'Landing pages y presencia digital', available: true },
-  { name: 'PEVLYN Agenda', description: 'Citas, reservas y disponibilidad', available: false },
-  { name: 'PEVLYN CRM', description: 'Clientes, historial y ventas', available: false },
-  { name: 'PEVLYN Flow', description: 'Automatizaciones y WhatsApp', available: false },
+  { name: 'PEVLYN Web', description: 'Presencia digital', available: true, href: '#soluciones' },
+  { name: 'PEVLYN Agenda', description: 'Citas y clientes', available: false, href: '#agenda' },
+  { name: 'PEVLYN CRM', description: 'Historial y ventas', available: false },
+  { name: 'PEVLYN Flow', description: 'Automatizaciones', available: false },
 ]

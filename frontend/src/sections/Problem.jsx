@@ -1,11 +1,9 @@
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal from '../components/Reveal.jsx'
-import Card from '../components/Card.jsx'
-import IconBadge from '../components/IconBadge.jsx'
 import { problems } from '../data/problems.js'
 
-/** El problema que viven los negocios hoy (§16). */
+/** El problema: síntomas de un negocio que creció más rápido que su método. */
 export default function Problem() {
   return (
     <Section labelledBy="problema-title">
@@ -14,33 +12,30 @@ export default function Problem() {
         eyebrow="El problema"
         title={
           <>
-            Tu negocio no debería depender
-            <br className="hidden sm:block" /> de 20 conversaciones de WhatsApp.
+            Tu negocio está creciendo.
+            <br className="hidden sm:block" />{' '}
+            <span className="text-text-subtle">¿Tu forma de trabajar también?</span>
           </>
         }
+        description="Casi ningún negocio se rompe de golpe. Se va llenando de pequeños procesos manuales que un día dejan de sostenerse."
       />
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-14 grid gap-px overflow-hidden rounded-xl2 bg-border ring-1 ring-border sm:grid-cols-2 lg:grid-cols-3">
         {problems.map((problem, i) => (
-          <Reveal key={problem.title} delay={i * 90} className="h-full">
-            <Card className="flex h-full flex-col gap-4">
-              <IconBadge icon={problem.icon} />
-              <h3 className="text-lg text-ink">{problem.title}</h3>
-              <p className="text-sm leading-relaxed text-text-muted">{problem.description}</p>
-              {problem.items && (
-                <ul className="mt-auto flex flex-col gap-1.5 pt-1">
-                  {problem.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
-                      <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Card>
+          <Reveal
+            as="li"
+            key={problem.title}
+            delay={(i % 3) * 80}
+            className="group bg-white p-7 transition-colors duration-300 hover:bg-primary-softer"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-primary ring-1 ring-border transition-colors duration-300 group-hover:bg-white">
+              <problem.icon size={19} strokeWidth={1.9} aria-hidden="true" />
+            </span>
+            <h3 className="mt-5 text-base text-ink">{problem.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-text-muted">{problem.description}</p>
           </Reveal>
         ))}
-      </div>
+      </ul>
     </Section>
   )
 }

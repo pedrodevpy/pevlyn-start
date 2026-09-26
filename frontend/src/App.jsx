@@ -1,21 +1,32 @@
 import Navbar from './sections/Navbar.jsx'
 import Hero from './sections/Hero.jsx'
-import SocialProof from './sections/SocialProof.jsx'
 import Problem from './sections/Problem.jsx'
-import Solution from './sections/Solution.jsx'
-import Services from './sections/Services.jsx'
-import HowItWorks from './sections/HowItWorks.jsx'
-import Benefits from './sections/Benefits.jsx'
-import PevlynWeb from './sections/PevlynWeb.jsx'
+import Answer from './sections/Answer.jsx'
+import Solutions from './sections/Solutions.jsx'
+import Growth from './sections/Growth.jsx'
+import Agenda from './sections/Agenda.jsx'
+import UseCases from './sections/UseCases.jsx'
+import Process from './sections/Process.jsx'
+import WhyPevlyn from './sections/WhyPevlyn.jsx'
+import Projects from './sections/Projects.jsx'
 import Pricing from './sections/Pricing.jsx'
 import FAQ from './sections/FAQ.jsx'
 import FinalCTA from './sections/FinalCTA.jsx'
 import Footer from './sections/Footer.jsx'
 
+/**
+ * La landing cuenta una historia, y el orden es el argumento:
+ *
+ *   problema → respuesta → soluciones → crecimiento → producto
+ *   → para quién → proceso → por qué → prueba → precio → dudas → acción
+ *
+ * El tono de fondo alterna a propósito (oscuro / claro / superficie) para dar
+ * ritmo: las secciones oscuras marcan los momentos protagonistas —hero, la
+ * idea central de crecimiento, por qué PEVLYN y el cierre—.
+ */
 export default function App() {
   return (
     <>
-      {/* Salto directo al contenido para usuarios de teclado y lectores de pantalla */}
       <a
         href="#contenido"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-5 focus:py-3 focus:font-sans focus:text-sm focus:font-semibold focus:text-white"
@@ -27,13 +38,15 @@ export default function App() {
 
       <main id="contenido">
         <Hero />
-        <SocialProof />
         <Problem />
-        <Solution />
-        <Services />
-        <HowItWorks />
-        <Benefits />
-        <PevlynWeb />
+        <Answer />
+        <Solutions />
+        <Growth />
+        <Agenda />
+        <UseCases />
+        <Process />
+        <WhyPevlyn />
+        <Projects />
         <Pricing />
         <FAQ />
         <FinalCTA />

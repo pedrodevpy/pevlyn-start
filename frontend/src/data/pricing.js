@@ -12,7 +12,8 @@ export const pricingPlans = [
     name: 'START',
     price: '$350.000',
     currency: 'COP',
-    description: 'Para empezar a existir online de forma profesional.',
+    description: 'El primer paso: existir online de forma profesional.',
+    stage: 'Etapa 01 · Presencia',
     features: [
       'Landing profesional',
       'WhatsApp',
@@ -29,7 +30,8 @@ export const pricingPlans = [
     name: 'BUSINESS',
     price: '$550.000',
     currency: 'COP',
-    description: 'Presencia digital completa con agenda y posicionamiento.',
+    description: 'Presencia completa, con agenda y posicionamiento.',
+    stage: 'Etapa 01–02 · Presencia y organización',
     inheritsFrom: 'START',
     features: [
       'Agenda',
@@ -47,7 +49,8 @@ export const pricingPlans = [
     pricePrefix: 'Desde',
     price: '$800.000',
     currency: 'COP',
-    description: 'Cuando necesitas gestionar clientes y citas desde un panel.',
+    description: 'Cuando necesitas gestionar tu operación desde un panel.',
+    stage: 'Etapa 02–03 · Organización y automatización',
     inheritsFrom: 'BUSINESS',
     features: [
       'Panel administrativo',
@@ -63,4 +66,4 @@ export const pricingPlans = [
 
 /** Nota honesta sobre la vigencia de los precios (contexto general §21). */
 export const pricingNote =
-  'Precios iniciales de lanzamiento. Cada solución se cotiza según las necesidades del negocio.'
+  'Precios iniciales de lanzamiento. Cada solución se cotiza según las necesidades del negocio. ¿Necesitas algo que no encaja en ningún plan? Hablemos.'

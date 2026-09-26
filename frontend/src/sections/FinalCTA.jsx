@@ -8,36 +8,55 @@ import { whatsAppLinkProps } from '../lib/whatsapp.js'
 import { hasWhatsApp } from '../config/site.js'
 
 /**
- * CTA final + formulario de contacto (§25 y §26).
+ * CTA final + formulario.
  *
- * El CTA "Hablar con PEVLYN" solo se renderiza como enlace externo cuando
- * existe un WhatsApp oficial configurado; si no, desplaza al formulario.
+ * El CTA de WhatsApp solo se renderiza como enlace externo si hay número
+ * oficial configurado; si no, desplaza al formulario.
  */
 export default function FinalCTA() {
-  const whatsapp = whatsAppLinkProps()
+  const whatsapp = whatsAppLinkProps(
+    'Hola PEVLYN, quiero mejorar un proceso de mi negocio.',
+  )
 
   return (
-    <section id="contacto" aria-labelledby="contacto-title" className="bg-ink py-20 sm:py-24 lg:py-28">
+    <section
+      id="contacto"
+      aria-labelledby="contacto-title"
+      className="relative isolate overflow-hidden bg-ink py-20 sm:py-24 lg:py-28"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-grid mask-fade-b opacity-60" />
+        <div className="absolute left-1/2 top-[-10rem] h-[26rem] w-[44rem] max-w-[130vw] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+      </div>
+
       <Container>
         <div className="grid items-start gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)] lg:gap-16">
           <Reveal className="flex flex-col items-start lg:sticky lg:top-28">
-            <Eyebrow tone="light">Empieza hoy</Eyebrow>
+            <Eyebrow tone="light">Hablemos</Eyebrow>
 
-            <h2 id="contacto-title" className="mt-6 text-3xl leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]">
-              Tu negocio está listo para crecer.
+            <h2
+              id="contacto-title"
+              className="mt-6 text-3xl leading-[1.15] text-white sm:text-4xl lg:text-[2.75rem]"
+            >
+              Tu negocio ya está trabajando.
+              <br className="hidden sm:block" />{' '}
+              <span className="text-gradient-on-dark">
+                Ahora hagamos que la tecnología trabaje contigo.
+              </span>
             </h2>
 
-            <p className="mt-5 max-w-md text-base leading-relaxed text-white/70 sm:text-lg">
-              Empieza a digitalizar las tareas que más tiempo te quitan.
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/55 sm:text-lg">
+              Cuéntanos qué proceso quieres mejorar. Miramos cómo trabajas hoy y
+              te decimos por dónde tiene más sentido empezar.
             </p>
 
             <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <Button href="#formulario-contacto" variant="light" size="lg">
-                Digitaliza tu negocio
+                Hablemos de mi negocio
               </Button>
               <Button {...whatsapp} variant="outlineLight" size="lg">
                 {hasWhatsApp() && <MessageCircle size={18} aria-hidden="true" />}
-                Hablar con PEVLYN
+                Escribir por WhatsApp
               </Button>
             </div>
           </Reveal>

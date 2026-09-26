@@ -1,36 +1,60 @@
-# PEVLYN — Landing Page v0.1
+# PEVLYN — Landing Page v2
 
 > **Business Technology**
 > Simplifica. Automatiza. Crece.
 
-Landing page oficial de PEVLYN, implementada según
-[`docs/LANDING_DEVELOPMENT.md`](docs/LANDING_DEVELOPMENT.md) y
-[`docs/pevlyn-general-context.md`](docs/pevlyn-general-context.md).
+Landing oficial de PEVLYN. La v2 reescribe la narrativa y la dirección visual
+sobre la arquitectura de la v1, que se mantiene.
 
 ---
 
 ## Stack
 
-| Pieza        | Versión | Motivo                                              |
-| ------------ | ------- | --------------------------------------------------- |
-| React        | 19      | Obligatorio por la especificación (§9)               |
-| Vite         | 8       | Obligatorio por la especificación (§9)               |
-| Tailwind CSS | 4       | Obligatorio por la especificación (§9)               |
-| lucide-react | 1       | Iconografía recomendada (§9)                         |
+React 19 · Vite 8 · Tailwind CSS 4 · lucide-react.
 
-Sin Bootstrap, sin jQuery, sin backend y sin dependencias adicionales.
-
----
-
-## Arranque
+Sin Bootstrap, sin jQuery, sin backend y sin dependencias añadidas respecto a
+la v1.
 
 ```bash
 cd frontend
 npm install
 npm run dev      # desarrollo  → http://localhost:5173
-npm run build    # build de producción → dist/
+npm run build    # producción  → dist/
 npm run preview  # sirve dist/ localmente
 ```
+
+---
+
+## La narrativa
+
+El orden de las secciones **es el argumento comercial**, no una lista de
+apartados. Cambiarlo cambia lo que la página defiende:
+
+```text
+problema  →  respuesta  →  soluciones  →  crecimiento  →  producto
+          →  para quién  →  proceso  →  por qué  →  prueba
+          →  precio  →  dudas  →  acción
+```
+
+El tono de fondo alterna a propósito. Las secciones oscuras marcan los
+momentos protagonistas: **hero**, **la ruta de crecimiento**, **por qué
+PEVLYN** y **el cierre**. Las claras sostienen el contenido.
+
+| # | Sección | Tono | Qué responde |
+| --- | --- | --- | --- |
+| 1 | Hero + micro-mensaje | Oscuro | Qué es PEVLYN |
+| 2 | Problema | Claro | Qué problema resuelve |
+| 3 | PEVLYN conecta las piezas | Superficie | Por qué PEVLYN |
+| 4 | Soluciones (4 pilares) | Claro | Qué hace |
+| 5 | Ruta de crecimiento | **Oscuro** | Cómo acompaña el crecimiento |
+| 6 | PEVLYN Agenda | Superficie | Qué es Agenda |
+| 7 | Casos de uso | Claro | Para quién es |
+| 8 | Cómo trabajamos | Superficie | Cómo se empieza |
+| 9 | Por qué PEVLYN | **Oscuro** | Por qué contactar |
+| 10 | Proyectos | Claro | Qué existe de verdad |
+| 11 | Precios | Superficie | Qué se puede comprar hoy |
+| 12 | FAQ | Claro | Objeciones |
+| 13 | CTA final + formulario | **Oscuro** | Acción |
 
 ---
 
@@ -40,23 +64,24 @@ npm run preview  # sirve dist/ localmente
 pevlyn-start/
 ├── vercel.json                  Config de despliegue (ver "Despliegue")
 ├── docs/                        Especificación y contexto de marca
-├── logo/                        Logo oficial original (fuente de los assets)
+├── logo/                        Logo oficial original
 └── frontend/
     ├── public/                  Favicons, apple-touch-icon, OG, webmanifest
     └── src/
-        ├── assets/              Isotipo optimizado (webp)
-        ├── components/          Piezas reutilizables (Button, Card, Field…)
-        ├── config/site.js       ⚙️ Configuración central (ver abajo)
-        ├── data/                Todo el contenido: servicios, precios, FAQ…
+        ├── assets/              Isotipo optimizado (webp, 12.7 kB)
+        ├── components/          Piezas reutilizables y las dos maquetas
+        ├── config/site.js       ⚙️ Canales de contacto y marca
+        ├── data/                Todo el contenido de la página
         ├── lib/                 WhatsApp, envío de leads, hook de animación
-        ├── sections/            Las 13 secciones de la landing
-        ├── index.css            🎨 Design tokens
-        ├── App.jsx
+        ├── sections/            Las 13 secciones
+        ├── index.css            🎨 Design tokens y utilidades
+        ├── App.jsx              El orden de la narrativa
         └── main.jsx
 ```
 
-El contenido vive en `src/data/`, no dentro de los componentes: cambiar un
-precio, una pregunta del FAQ o un servicio es editar un único array.
+**Todo el contenido vive en `src/data/`**, nunca dentro de los componentes.
+Cambiar un precio, una pregunta del FAQ, un caso de uso o una etapa de la ruta
+de crecimiento es editar un array.
 
 ---
 
@@ -64,89 +89,66 @@ precio, una pregunta del FAQ o un servicio es editar un único array.
 
 ### 1. Canales de contacto — `src/config/site.js`
 
-La especificación prohíbe publicar datos de contacto inventados (§27, §36),
-así que los canales siguen siendo placeholders:
-
 ```js
 export const WHATSAPP_NUMBER = '573163423228'            // ✅ configurado
 export const CONTACT_EMAIL   = 'REPLACE_WITH_OFFICIAL_EMAIL'
 export const SITE_URL        = 'REPLACE_WITH_OFFICIAL_DOMAIN'
 ```
 
-El código se adapta solo al estado de estos valores:
+La UI se adapta sola al estado de estos valores: si un canal no existe, los
+CTA caen al formulario en lugar de renderizar un enlace roto. Con WhatsApp
+activo, enviar el formulario abre una conversación con el lead ya redactado.
 
-| Estado                        | Comportamiento                                                   |
-| ----------------------------- | ---------------------------------------------------------------- |
-| `WHATSAPP_NUMBER` definido    | **Actual.** Los CTA abren `wa.me` y el formulario envía el lead por WhatsApp. |
-| Solo `CONTACT_EMAIL` definido | El formulario envía el lead por `mailto`.                        |
-| Ninguno definido              | Los CTA llevan al formulario, que valida y avisa de que los canales se están configurando. |
-
-Con WhatsApp activo, al enviar el formulario se abre una conversación contigo
-con el lead ya redactado:
-
-```text
-Hola PEVLYN, quiero digitalizar mi negocio.
-
-Nombre: Ana Torres
-Negocio: Barbería Central
-WhatsApp: 300 123 4567
-Correo: ana@ejemplo.com
-Tipo de negocio: Barbería
-Necesito: Agenda de citas
-```
-
-**Pendiente al publicar el dominio:** `index.html` deja `og:url` fuera y
-`og:image` como ruta relativa. Cuando exista el dominio oficial, conviene
-pasarlos a URL absolutas para que las previsualizaciones en redes funcionen.
+**Pendiente al publicar el dominio:** definir `SITE_URL` y convertir `og:url`
+y `og:image` a URL absolutas en `frontend/index.html`, para que al compartir
+el enlace salga la tarjeta con el logo.
 
 ### 2. Conectar un backend
 
-`src/lib/leads.js` expone `submitLead(lead)`, que devuelve
+`src/lib/leads.js` expone `submitLead(lead)` y devuelve
 `{ status: 'whatsapp' | 'email' | 'unconfigured' | 'error' }`. Para persistir
-los leads solo hay que sustituir el cuerpo por la llamada HTTP; la firma y los
+leads basta con sustituir el cuerpo por la llamada HTTP: la firma y los
 estados que consume el formulario no cambian.
 
 ### 3. Identidad visual — `src/index.css`
 
-Todos los colores, tipografías, radios y sombras son tokens en el bloque
-`@theme`. No hay colores de marca dispersos por los componentes: cambiar la
-paleta es editar ese bloque.
+Colores, tipografías, radios, sombras y animaciones son tokens del bloque
+`@theme`. No hay colores de marca dispersos por los componentes.
 
-Los valores actuales están muestreados del logo oficial:
+Los valores están muestreados del logo oficial:
 
-| Token                   | Valor     | Origen                                  |
-| ----------------------- | --------- | --------------------------------------- |
-| `--color-primary`       | `#5b21e6` | Violeta principal de marca              |
-| `--color-primary-dark`  | `#3b1cba` | Extremo oscuro del degradado del logo   |
-| `--color-accent`        | `#903efb` | Electric violet, extremo claro          |
-| `--color-ink`           | `#090916` | Deep black del logo                     |
+| Token | Valor | Origen |
+| --- | --- | --- |
+| `--color-primary` | `#5b21e6` | Violeta principal |
+| `--color-primary-dark` | `#3b1cba` | Extremo oscuro del degradado |
+| `--color-accent` | `#903efb` | Electric violet |
+| `--color-accent-on-dark` | `#b98cff` | Variante legible sobre oscuro |
+| `--color-ink` | `#090916` | Deep black |
+| `--color-ink-raised` | `#101020` | Superficies elevadas en oscuro |
 
-Contrastes verificados contra WCAG AA (texto normal ≥ 4.5:1).
-
-### 4. Logo
-
-`src/assets/pevlyn-isotipo.webp` se extrajo de `logo/Pevlynlogos.png`. El
-componente `Logo` renderiza el lockup `[ISOTIPO] PEVLYN`; para actualizarlo
-basta con reemplazar ese archivo. Los favicons y la imagen Open Graph de
-`frontend/public/` proceden del mismo original.
+⚠️ **Dos degradados de texto, no uno.** `text-gradient-brand` es para fondos
+claros; sobre `--color-ink` sus dos primeros stops caen a 1.94:1 y 2.64:1, por
+debajo del 3:1 que exige AA para texto grande. Sobre oscuro va
+`text-gradient-on-dark`, cuyos tres tonos van de 4.67:1 a 11.6:1.
 
 ---
 
-## Decisiones de contenido
+## Reglas de contenido
 
-La especificación es explícita en no presentar como real nada que todavía no
-lo sea (§15, §23, §36). En consecuencia:
+La landing no presenta como real nada que todavía no lo sea:
 
-- **Sin testimonios, logos de clientes ni métricas.** La franja de confianza
-  muestra categorías de negocio, como indica §15.
-- **Los mockups van rotulados.** El dashboard del Hero y la web de negocio de
-  la sección PEVLYN Web llevan un pie que dice que son ejemplos ilustrativos.
-- **El plan BUSINESS se destaca solo visualmente.** Sin "más elegido" ni "el
-  mejor plan": no hay datos que lo respalden (§23).
-- **Sin datos de contacto ni textos legales ficticios.** El footer no inventa
-  dirección, teléfono, correo ni redes. Los documentos legales y los productos
-  aún no lanzados aparecen marcados como *Próximamente* en lugar de enlazar a
-  páginas inexistentes.
+- **Sin testimonios, logos de clientes, métricas ni resultados.**
+- **Los casos de uso son escenarios**, no clientes. La sección lo dice al pie.
+- **Las maquetas van rotuladas.** El mockup del hero y el dashboard de Agenda
+  llevan un pie indicando que son ejemplos ilustrativos, y ninguna cifra se
+  anima: animar números sugeriría que son datos reales.
+- **PEVLYN Agenda es una presentación conceptual** de un producto en
+  desarrollo. Solo se nombran los módulos ya definidos.
+- **`projects.js` solo lleva proyectos reales con su estado real.** Un negocio
+  identificable que aparezca ahí debe contar con autorización; borrar su
+  entrada del array lo retira de la sección.
+- **Sin datos de contacto ni textos legales ficticios.** Los documentos
+  legales y los productos no lanzados se marcan como *Próximamente*.
 
 ---
 
@@ -158,56 +160,19 @@ parece, porque **un deployment puede completar con éxito y aun así servir un
 que compilar, publica los archivos tal cual, y como en la raíz no hay
 `index.html`, la web responde `404 NOT_FOUND`.
 
-El repo trae dos `vercel.json` para que funcione con cualquiera de las dos
-configuraciones posibles. Vercel lee **solo** el que está en el *Root
+El repo trae dos `vercel.json`. Vercel lee **solo** el que está en el *Root
 Directory* del proyecto:
 
-| Root Directory del proyecto | Archivo que se usa     | Qué hace                                                |
-| --------------------------- | ---------------------- | ------------------------------------------------------- |
-| Raíz del repo (por defecto) | `vercel.json`          | Compila dentro de `frontend/` y publica `frontend/dist`. |
-| `frontend`                  | `frontend/vercel.json` | Preset de Vite; Vercel detecta el build solo.            |
+| Root Directory | Archivo que se usa | Qué hace |
+| --- | --- | --- |
+| Raíz del repo (por defecto) | `vercel.json` | Compila en `frontend/` y publica `frontend/dist`. |
+| `frontend` | `frontend/vercel.json` | Preset de Vite; Vercel detecta el build solo. |
 
-Ambos aplican las mismas cabeceras: `Content-Type` del webmanifest y caché de
-assets e iconos.
+Cada push a `main` publica a producción y cada PR genera su preview URL.
 
-### Opción A — Integración con Git (recomendada)
-
-1. En Vercel: **Add New → Project** e importa `pedrodevpy/pevlyn-start`.
-2. Despliega sin tocar nada: el `vercel.json` de la raíz ya indica dónde está
-   la app.
-
-Cada push a `main` publica a producción y cada PR genera su preview URL. No
-hace falta ningún token.
-
-> Alternativa: poner el Root Directory en `frontend` desde *Settings → General
-> → Root Directory*. Es igual de válido y no depende del `vercel.json` raíz.
-
-### Opción B — CLI
-
-```bash
-cd frontend
-npx vercel login
-npx vercel --prod
-```
-
-La primera ejecución pregunta por el directorio del proyecto: responde `.`
-estando ya dentro de `frontend`.
-
-### Si la web responde 404
-
-Casi siempre es el Root Directory. Míralo en *Settings → General → Root
-Directory*, y revisa el log del build: si no aparece ninguna línea de Vite
-(`vite build`, `dist/assets/…`), no se compiló nada y se están sirviendo los
-archivos del repo en crudo.
-
-### Antes del primer despliegue a producción
-
-La captación de leads ya funciona: `WHATSAPP_NUMBER` está configurado, así que
-los CTA y el formulario entregan el lead por WhatsApp.
-
-Queda solo el dominio: cuando lo tengas, pásalo a `SITE_URL` en
-`src/config/site.js` y convierte `og:url` y `og:image` a URL absolutas en
-`index.html` para que las previsualizaciones en redes funcionen.
+**Si la web responde 404:** míralo en *Settings → General → Root Directory*, y
+revisa el log del build. Si no aparece ninguna línea de Vite (`vite build`,
+`dist/assets/…`), no se compiló nada.
 
 ---
 
@@ -217,20 +182,17 @@ Comprobado con Chromium sobre el build de producción:
 
 - **Responsive:** sin overflow horizontal a 320, 390, 768, 1024 y 1440 px.
 - **Consola:** sin errores ni excepciones de React.
-- **Estructura:** un único `<h1>`, jerarquía `h2`/`h3` correcta, landmarks
-  `header`/`main`/`footer`/`nav`, ningún `<img>` sin `alt`.
+- **Contraste:** auditoría sobre el DOM renderizado, componiendo el alfa de
+  cada texto contra su fondo real. Sin fallos AA en texto visible.
+- **Estructura:** un único `<h1>`, jerarquía correcta, landmarks, ningún
+  `<img>` sin `alt`.
 - **Enlaces:** ningún `href` vacío; todas las anclas internas resuelven.
-- **Teclado:** skip link como primer tab, anillo de foco visible en todos los
-  controles, menú móvil operable y cerrable con `Escape`.
-- **Formulario:** valida los seis campos, marca errores con `aria-invalid` y
-  `role="alert"`, y comunica el resultado del envío.
-- **FAQ y menú móvil:** `aria-expanded` / `aria-controls` correctos.
+- **Teclado:** skip link como primer tab, foco visible en todos los controles,
+  menú móvil operable y cerrable con `Escape`.
+- **Formulario:** valida los seis campos con `aria-invalid` y `role="alert"`,
+  y entrega el lead por WhatsApp.
 - **Movimiento:** las animaciones respetan `prefers-reduced-motion`.
 
----
-
-## Estado según los criterios de aceptación (§37)
-
-Todos los puntos de la lista de la especificación están cubiertos. Queda una
-sola salvedad, a la espera de un dato oficial y no de código: las URL
-absolutas de Open Graph dependen del dominio.
+> Al auditar contraste sobre el DOM, `getComputedStyle` devuelve `oklab()` para
+> los colores con alfa de Tailwind 4. Parsearlo como `rgb()` da ratios
+> absurdos; hay que convertir con el navegador (canvas) antes de comparar.
