@@ -24,6 +24,7 @@ export const projects = [
     status: 'En desarrollo',
     description:
       'Sistema de gestión de citas adaptado a la operación de la clínica.',
+    href: 'https://daniel-rivera-fisioterapia.vercel.app/',
   },
   {
     name: 'Landing pages',
