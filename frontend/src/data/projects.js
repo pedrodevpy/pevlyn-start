@@ -4,9 +4,10 @@
  * ⚠️ Solo proyectos reales, con su estado real. No se muestran métricas,
  * testimonios ni resultados, porque todavía no existen.
  *
- * Nota sobre `Clínica Daniel Rivera`: al ser un negocio identificable, debe
- * contar con autorización para aparecer aquí. Si no la hay, basta con borrar
- * esa entrada de este array y desaparece de la sección.
+ * Todo negocio identificable que aparezca aquí necesita autorización para ser
+ * mostrado públicamente. `Clínica Daniel Rivera` la tiene: confirmada por el
+ * cliente el 29/09/2026. Para retirar cualquier proyecto basta con borrar su
+ * entrada de este array.
  */
 export const projects = [
   {
