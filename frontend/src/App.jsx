@@ -3,6 +3,7 @@ import Hero from './sections/Hero.jsx'
 import Problem from './sections/Problem.jsx'
 import Answer from './sections/Answer.jsx'
 import Solutions from './sections/Solutions.jsx'
+import TryPevlyn from './sections/TryPevlyn.jsx'
 import Growth from './sections/Growth.jsx'
 import Agenda from './sections/Agenda.jsx'
 import UseCases from './sections/UseCases.jsx'
@@ -17,8 +18,12 @@ import Footer from './sections/Footer.jsx'
 /**
  * La landing cuenta una historia, y el orden es el argumento:
  *
- *   problema → respuesta → soluciones → crecimiento → producto
- *   → para quién → proceso → por qué → prueba → precio → dudas → acción
+ *   problema → respuesta → soluciones → PROBARLO → producto → crecimiento
+ *   → para quién → proceso → por qué → proyectos → precio → dudas → acción
+ *
+ * La V3 añade "Prueba PEVLYN" justo después de Soluciones: una vez que el
+ * visitante entiende qué hacemos, lo siguiente es dejarle probarlo, no
+ * seguir explicándoselo.
  *
  * El tono de fondo alterna a propósito (oscuro / claro / superficie) para dar
  * ritmo: las secciones oscuras marcan los momentos protagonistas —hero, la
@@ -41,8 +46,9 @@ export default function App() {
         <Problem />
         <Answer />
         <Solutions />
-        <Growth />
+        <TryPevlyn />
         <Agenda />
+        <Growth />
         <UseCases />
         <Process />
         <WhyPevlyn />
