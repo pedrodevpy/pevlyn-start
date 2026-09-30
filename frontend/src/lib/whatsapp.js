@@ -24,3 +24,23 @@ export function whatsAppLinkProps(message) {
     ...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
   }
 }
+
+/**
+ * Abre WhatsApp con un mensaje ya redactado.
+ *
+ * Punto único para todos los CTA que generan mensajes dinámicos (diagnóstico,
+ * constructor, demo de Agenda), de modo que la lógica de número y codificación
+ * no se duplica. Si todavía no hay número oficial configurado, lleva al
+ * formulario de contacto en lugar de abrir un enlace roto.
+ *
+ * @returns {boolean} true si abrió WhatsApp, false si redirigió al formulario.
+ */
+export function openWhatsApp(message = DEFAULT_WHATSAPP_MESSAGE) {
+  const href = whatsAppHref(message)
+  if (!hasWhatsApp()) {
+    window.location.hash = CONTACT_ANCHOR
+    return false
+  }
+  window.open(href, '_blank', 'noopener,noreferrer')
+  return true
+}

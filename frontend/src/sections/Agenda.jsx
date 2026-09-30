@@ -4,7 +4,8 @@ import Eyebrow from '../components/Eyebrow.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Button from '../components/Button.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
-import AgendaMockup from '../components/AgendaMockup.jsx'
+import AgendaDashboard from '../components/AgendaDashboard.jsx'
+import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import { agendaModules, agendaStatus } from '../data/agenda.js'
 import { CONTACT_ANCHOR } from '../config/site.js'
 
@@ -23,25 +24,29 @@ export default function Agenda() {
           <span className="flex flex-wrap items-center justify-center gap-3">
             <Eyebrow>Producto</Eyebrow>
             <StatusBadge tone="building">{agendaStatus}</StatusBadge>
+            <StatusBadge tone="soon">Demo interactiva</StatusBadge>
           </span>
 
           <h2
             id="agenda-title"
             className="mt-6 max-w-3xl text-3xl leading-[1.15] text-ink sm:text-4xl lg:text-[2.75rem]"
           >
-            Conoce PEVLYN Agenda.
+            Explora PEVLYN Agenda.
           </h2>
 
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-muted sm:text-lg">
-            Tu negocio tiene clientes. Ahora también puede tener un sistema para
-            organizarlos.
+            Una forma más simple de organizar clientes, citas y servicios. Es
+            una demo: puedes moverte por ella.
           </p>
         </Reveal>
       </div>
 
-      {/* Maqueta del producto */}
+      {/* Demo interactiva del producto */}
       <Reveal delay={120} className="mx-auto mt-14 w-full max-w-4xl">
-        <AgendaMockup />
+        <AgendaDashboard />
+        <p className="mt-4 text-center text-xs text-text-subtle">
+          Demo conceptual de un producto en desarrollo. Todos los datos son ficticios.
+        </p>
       </Reveal>
 
       {/* Módulos definidos */}
@@ -67,14 +72,26 @@ export default function Agenda() {
       </Reveal>
 
       <Reveal className="mt-14 flex flex-col items-center gap-5 text-center">
+        <h3 className="text-2xl text-ink sm:text-3xl">
+          ¿Te gustaría tener algo así para tu negocio?
+        </h3>
         <p className="max-w-2xl text-base leading-relaxed text-text-muted">
-          Estamos construyendo una herramienta para que los negocios que
-          trabajan con citas puedan organizar su operación desde un solo lugar.
+          Estamos construyendo PEVLYN Agenda para ayudar a los negocios a
+          organizar mejor su día a día.
         </p>
-        <Button href={CONTACT_ANCHOR} size="lg">
-          Quiero conocer PEVLYN Agenda
-          <ArrowRight size={18} aria-hidden="true" />
-        </Button>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href={CONTACT_ANCHOR} size="lg">
+            Quiero conocer PEVLYN Agenda
+            <ArrowRight size={18} aria-hidden="true" />
+          </Button>
+          <WhatsAppButton
+            variant="secondary"
+            size="lg"
+            message="Hola PEVLYN 👋 Probé la demo de PEVLYN Agenda en su página y me gustaría saber más."
+          >
+            Hablar con PEVLYN
+          </WhatsAppButton>
+        </div>
         <p className="text-xs text-text-subtle">
           Te avisamos cuando esté disponible. Sin compromiso.
         </p>

@@ -33,7 +33,7 @@ export default function Answer() {
           </p>
           <a
             href="#soluciones"
-            className="group mt-8 inline-flex items-center gap-2 font-sans text-[0.95rem] font-semibold text-primary transition-colors hover:text-primary-dark"
+            className="group mt-6 inline-flex min-h-11 items-center gap-2 font-sans text-[0.95rem] font-semibold text-primary transition-colors hover:text-primary-dark"
           >
             Ver las cuatro soluciones
             <ArrowRight
