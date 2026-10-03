@@ -8,7 +8,7 @@ import { ArrowUpRight } from 'lucide-react'
  * de servicio cualquiera.
  */
 export default function SolutionPillar({ pillar }) {
-  const { number, title, tagline, items, icon: Icon } = pillar
+  const { number, title, tagline, summary, items, icon: Icon } = pillar
 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-xl2 bg-white p-7 ring-1 ring-border transition duration-300 motion-safe:hover:-translate-y-1 hover:shadow-lift hover:ring-primary/30 sm:p-8">
@@ -27,7 +27,8 @@ export default function SolutionPillar({ pillar }) {
       </span>
 
       <h3 className="relative mt-6 text-xl text-ink">{title}</h3>
-      <p className="relative mt-2 text-sm font-medium leading-relaxed text-primary">{tagline}</p>
+      <p className="relative mt-1.5 font-sans text-sm font-semibold text-primary">{summary}</p>
+      <p className="relative mt-3 text-sm leading-relaxed text-text-muted">{tagline}</p>
 
       <ul className="relative mt-6 flex flex-col gap-2.5 border-t border-border pt-5">
         {items.map((item) => (

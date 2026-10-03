@@ -12,10 +12,10 @@ import { projects } from '../data/projects.js'
  */
 export default function Projects() {
   return (
-    <Section labelledBy="proyectos-title">
+    <Section id="nosotros" labelledBy="proyectos-title">
       <SectionHeading
         id="proyectos-title"
-        eyebrow="En qué trabajamos"
+        eyebrow="Nosotros"
         title="Proyectos en marcha."
         description="Estamos empezando, así que preferimos enseñar lo que estamos construyendo antes que hablar de logros que todavía no tenemos."
       />

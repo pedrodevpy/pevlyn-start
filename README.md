@@ -32,11 +32,26 @@ que la portada crezca sin control y hace que nada se cuente dos veces.
 
 | Ruta | Función | Contiene |
 | --- | --- | --- |
-| `/` | **Vender PEVLYN** | El argumento comercial. Ninguna herramienta interactiva. |
+| `/` | **Vender PEVLYN** | El argumento comercial, cada idea una sola vez. Ninguna herramienta interactiva. |
 | `/demo` | **Probar PEVLYN** | Diagnóstico, demo de Agenda y constructor, en pestañas. |
 | `/agenda` | **Presentar el producto** | Qué es PEVLYN Agenda, sus módulos y para quién. |
 
 El recorrido previsto es: conocer en `/` → probar en `/demo` → contactar.
+
+### Una idea, un sitio
+
+La portada tenía dos secciones ("Soluciones" y "Evolución") que nombraban los
+mismos cuatro conceptos —presencia, organización, automatización, software— con
+palabras casi idénticas. Ahora las cuatro capas se cuentan **una vez**, en
+`Solutions`, con su número de etapa incorporado: el *qué hacemos* y el *en qué
+orden* se leen juntos.
+
+Por el mismo motivo la FAQ pasó de siete preguntas a cuatro: seis repetían lo
+que ya dicen el hero, Soluciones o la sección de Agenda. Una FAQ resuelve
+objeciones, no vuelve a explicar la oferta.
+
+Antes de añadir una sección a `/`, conviene comprobar que no responde a algo
+que la página ya contesta más arriba.
 
 ### Routing
 
