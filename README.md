@@ -25,38 +25,42 @@ npm run preview  # sirve dist/ localmente
 
 ---
 
-## La narrativa
+## Arquitectura de páginas
 
-El orden de las secciones **es el argumento comercial**, no una lista de
-apartados. Cambiarlo cambia lo que la página defiende:
+El sitio son tres páginas con un propósito distinto cada una. Separarlas evita
+que la portada crezca sin control y hace que nada se cuente dos veces.
 
-```text
-problema  →  respuesta  →  soluciones  →  crecimiento  →  producto
-          →  para quién  →  proceso  →  por qué  →  prueba
-          →  precio  →  dudas  →  acción
-```
+| Ruta | Función | Contiene |
+| --- | --- | --- |
+| `/` | **Vender PEVLYN** | El argumento comercial. Ninguna herramienta interactiva. |
+| `/demo` | **Probar PEVLYN** | Diagnóstico, demo de Agenda y constructor, en pestañas. |
+| `/agenda` | **Presentar el producto** | Qué es PEVLYN Agenda, sus módulos y para quién. |
 
-El tono de fondo alterna a propósito. Las secciones oscuras marcan los
-momentos protagonistas: **hero**, **la ruta de crecimiento**, **por qué
-PEVLYN** y **el cierre**. Las claras sostienen el contenido.
+El recorrido previsto es: conocer en `/` → probar en `/demo` → contactar.
 
-| # | Sección | Tono | Qué responde |
-| --- | --- | --- | --- |
-| 1 | Hero + micro-mensaje | Oscuro | Qué es PEVLYN |
-| 2 | Problema | Claro | Qué problema resuelve |
-| 3 | PEVLYN conecta las piezas | Superficie | Por qué PEVLYN |
-| 4 | Soluciones (4 pilares) | Claro | Qué hace |
-| 5 | Ruta de crecimiento | **Oscuro** | Cómo acompaña el crecimiento |
-| 6 | PEVLYN Agenda | Superficie | Qué es Agenda |
-| 7 | Casos de uso | Claro | Para quién es |
-| 8 | Cómo trabajamos | Superficie | Cómo se empieza |
-| 9 | Por qué PEVLYN | **Oscuro** | Por qué contactar |
-| 10 | Proyectos | Claro | Qué existe de verdad |
-| 11 | Precios | Superficie | Qué se puede comprar hoy |
-| 12 | FAQ | Claro | Objeciones |
-| 13 | CTA final + formulario | **Oscuro** | Acción |
+### Routing
 
----
+`src/lib/router.jsx` es un router propio de ~100 líneas sobre la History API.
+Para tres rutas estáticas y un query param, una librería añadiría ~20 kB y una
+capa de abstracción que el sitio no necesita. Cubre navegación sin recarga,
+anclas que funcionan desde cualquier página, botones atrás/adelante y
+`?tool=`.
+
+⚠️ **Las rutas necesitan el rewrite de `vercel.json`.** `/demo` y `/agenda` no
+son archivos: sin `rewrites` apuntando a `/index.html`, entrar directamente a
+ellas o recargar devolvería 404.
+
+### Pestañas de `/demo`
+
+La herramienta activa se refleja en la URL (`/demo?tool=agenda`), así que un
+enlace abre directamente esa herramienta y se puede compartir. Se usa
+`replace` para no llenar el historial al cambiar de pestaña.
+
+### Carga diferida
+
+`/demo` y `/agenda` se cargan con `React.lazy`, de modo que quien entra a `/`
+no descarga el diagnóstico, el dashboard ni el constructor. Vite las separa en
+chunks propios: `/demo` pesa unos 36 kB aparte del bundle principal.
 
 ## Estructura
 
@@ -71,11 +75,12 @@ pevlyn-start/
         ├── assets/              Isotipo optimizado (webp, 12.7 kB)
         ├── components/          Piezas reutilizables y las dos maquetas
         ├── config/site.js       ⚙️ Canales de contacto y marca
-        ├── data/                Todo el contenido de la página
-        ├── lib/                 WhatsApp, envío de leads, hook de animación
-        ├── sections/            Las 13 secciones
+        ├── data/                Todo el contenido del sitio
+        ├── lib/                 Router, WhatsApp, envío de leads, animación
+        ├── pages/               Una por ruta: Home, Demo, Agenda
+        ├── sections/            Bloques reutilizables de las páginas
         ├── index.css            🎨 Design tokens y utilidades
-        ├── App.jsx              El orden de la narrativa
+        ├── App.jsx              Rutas y carga diferida
         └── main.jsx
 ```
 

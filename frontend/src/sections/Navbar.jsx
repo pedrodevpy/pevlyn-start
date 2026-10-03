@@ -3,8 +3,8 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Logo from '../components/Logo.jsx'
 import Button from '../components/Button.jsx'
-import { navLinks } from '../data/navigation.js'
-import { CONTACT_ANCHOR } from '../config/site.js'
+import { navLinks, navCta } from '../data/navigation.js'
+import { Link, useRouter } from '../lib/router.jsx'
 
 /**
  * Navbar adaptativa.
@@ -13,7 +13,14 @@ import { CONTACT_ANCHOR } from '../config/site.js'
  * blanco); al hacer scroll pasa a fondo claro con blur. El menú móvil abierto
  * fuerza el estado claro para que siempre haya contraste suficiente.
  */
+/** Un enlace con ancla solo marca "activo" por su ruta, no por el ancla. */
+function isActive(to, pathname) {
+  const path = to.split('#')[0] || '/'
+  return path === pathname
+}
+
 export default function Navbar() {
+  const { pathname } = useRouter()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -46,26 +53,34 @@ export default function Navbar() {
       }`}
     >
       <Container className="flex h-18 items-center justify-between gap-4 py-4">
-        <a href="#inicio" className="shrink-0" aria-label="PEVLYN — inicio">
+        <Link to="/" className="shrink-0" aria-label="PEVLYN — inicio">
           <Logo size="md" tone={solid ? 'dark' : 'light'} />
-        </a>
+        </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
           <ul className="flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={`inline-flex h-10 items-center rounded-full px-3.5 font-sans text-sm font-medium transition-colors ${
-                    solid
-                      ? 'text-text-muted hover:bg-surface hover:text-ink'
-                      : 'text-white/70 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(link.to, pathname)
+              return (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    aria-current={active ? 'page' : undefined}
+                    className={`inline-flex h-10 items-center rounded-full px-3 font-sans text-sm font-medium transition-colors ${
+                      solid
+                        ? active
+                          ? 'bg-primary-soft text-primary-dark'
+                          : 'text-text-muted hover:bg-surface hover:text-ink'
+                        : active
+                          ? 'bg-white/15 text-white'
+                          : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </nav>
 
@@ -73,12 +88,8 @@ export default function Navbar() {
           {/* El wrapper controla la visibilidad: aplicar `hidden` sobre el
               Button chocaría con el `inline-flex` de su clase base. */}
           <span className="hidden sm:block">
-            <Button
-              href={CONTACT_ANCHOR}
-              size="sm"
-              variant={solid ? 'primary' : 'light'}
-            >
-              Quiero mejorar mi negocio
+            <Button to={navCta.to} size="sm" variant={solid ? 'primary' : 'light'}>
+              {navCta.label}
             </Button>
           </span>
 
@@ -102,24 +113,25 @@ export default function Navbar() {
           <nav aria-label="Principal móvil">
             <ul className="flex flex-col">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
                     onClick={() => setOpen(false)}
-                    className="block rounded-xl px-3 py-3.5 font-sans text-base font-medium text-ink transition-colors hover:bg-surface"
+                    aria-current={isActive(link.to, pathname) ? 'page' : undefined}
+                    className={`block rounded-xl px-3 py-3.5 font-sans text-base font-medium transition-colors ${
+                      isActive(link.to, pathname)
+                        ? 'bg-primary-soft text-primary-dark'
+                        : 'text-ink hover:bg-surface'
+                    }`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
-          <Button
-            href={CONTACT_ANCHOR}
-            onClick={() => setOpen(false)}
-            className="mt-3 w-full sm:hidden"
-          >
-            Quiero mejorar mi negocio
+          <Button to={navCta.to} onClick={() => setOpen(false)} className="mt-3 w-full sm:hidden">
+            {navCta.label}
             <ArrowRight size={17} aria-hidden="true" />
           </Button>
         </Container>

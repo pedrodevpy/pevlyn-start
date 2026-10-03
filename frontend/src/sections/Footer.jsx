@@ -2,9 +2,10 @@ import Container from '../components/Container.jsx'
 import Logo from '../components/Logo.jsx'
 import { navLinks } from '../data/navigation.js'
 import { products } from '../data/products.js'
-import { BRAND, CONTACT_ANCHOR } from '../config/site.js'
+import { BRAND } from '../config/site.js'
+import { Link } from '../lib/router.jsx'
 
-const footerLinks = [...navLinks, { label: 'Contacto', href: CONTACT_ANCHOR }]
+const footerLinks = navLinks
 
 /**
  * Footer.
@@ -35,13 +36,13 @@ export default function Footer() {
             </h2>
             <ul className="mt-4 flex flex-col gap-3">
               {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
                     className="text-sm text-white/55 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

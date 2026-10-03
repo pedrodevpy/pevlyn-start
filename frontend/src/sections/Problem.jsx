@@ -20,12 +20,13 @@ export default function Problem() {
         description="Casi ningún negocio se rompe de golpe. Se va llenando de pequeños procesos manuales que un día dejan de sostenerse."
       />
 
-      <ul className="mt-14 grid gap-px overflow-hidden rounded-xl2 bg-border ring-1 ring-border sm:grid-cols-2 lg:grid-cols-3">
-        {problems.map((problem, i) => (
+      <ul className="mt-14 grid gap-px overflow-hidden rounded-xl2 bg-border ring-1 ring-border sm:grid-cols-2 lg:grid-cols-4">
+        {/* Solo los cuatro principales: la portada resume, no inventaría. */}
+        {problems.slice(0, 4).map((problem, i) => (
           <Reveal
             as="li"
             key={problem.title}
-            delay={(i % 3) * 80}
+            delay={(i % 4) * 80}
             className="group bg-white p-7 transition-colors duration-300 hover:bg-primary-softer"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-primary ring-1 ring-border transition-colors duration-300 group-hover:bg-white">
