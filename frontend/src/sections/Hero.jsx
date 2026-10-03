@@ -3,7 +3,7 @@ import Container from '../components/Container.jsx'
 import Button from '../components/Button.jsx'
 import HeroMockup from '../components/HeroMockup.jsx'
 import { trustPillars } from '../data/navigation.js'
-import { CONTACT_ANCHOR, BRAND } from '../config/site.js'
+import { BRAND } from '../config/site.js'
 
 /**
  * Hero oscuro: el cambio de percepción más importante de la V2.
@@ -42,12 +42,12 @@ export default function Hero() {
             </p>
 
             <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-              <Button href={CONTACT_ANCHOR} variant="light" size="lg">
-                Quiero mejorar mi negocio
+              <Button to="/demo" variant="light" size="lg">
+                Probar PEVLYN
                 <ArrowRight size={18} aria-hidden="true" />
               </Button>
               <Button href="#soluciones" variant="outlineLight" size="lg">
-                Explorar soluciones
+                Conocer soluciones
               </Button>
             </div>
           </div>

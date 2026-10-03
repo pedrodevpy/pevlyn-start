@@ -1,3 +1,5 @@
+import { Link } from '../lib/router.jsx'
+
 // Dos decisiones deliberadas:
 // 1. Sin `whitespace-nowrap`: un botón a ancho completo en móvil debe poder
 //    envolver su texto. Con nowrap, su min-content empuja el layout y provoca
@@ -30,12 +32,16 @@ const sizes = {
 }
 
 /**
- * Botón único de la landing.
- * Renderiza <a> cuando recibe `href` y <button> en caso contrario, para no
- * romper la semántica (LANDING_DEVELOPMENT.md §31).
+ * Botón único del sitio.
+ *
+ * Elige el elemento según el destino, para no romper la semántica:
+ * `to` → enlace interno del router (navega sin recargar),
+ * `href` → <a> normal (anclas y enlaces externos),
+ * sin destino → <button>.
  */
 export default function Button({
   as,
+  to,
   href,
   variant = 'primary',
   size = 'md',
@@ -43,13 +49,13 @@ export default function Button({
   children,
   ...rest
 }) {
-  const Tag = as ?? (href ? 'a' : 'button')
+  const Tag = as ?? (to ? Link : href ? 'a' : 'button')
   const classes = `${base} ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`
 
   if (Tag === 'button' && rest.type === undefined) rest.type = 'button'
 
   return (
-    <Tag className={classes} {...(href ? { href } : {})} {...rest}>
+    <Tag className={classes} {...(to ? { to } : href ? { href } : {})} {...rest}>
       {children}
     </Tag>
   )

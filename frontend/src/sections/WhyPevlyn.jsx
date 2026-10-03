@@ -9,7 +9,7 @@ import { differentiators } from '../data/differentiators.js'
  */
 export default function WhyPevlyn() {
   return (
-    <Section tone="dark" glow labelledBy="porque-title">
+    <Section id="nosotros" tone="dark" glow labelledBy="porque-title">
       <SectionHeading
         id="porque-title"
         eyebrow="Por qué PEVLYN"

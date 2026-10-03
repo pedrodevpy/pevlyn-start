@@ -51,8 +51,8 @@ export default function FinalCTA() {
             </p>
 
             <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Button href="#formulario-contacto" variant="light" size="lg">
-                Hablemos de mi negocio
+              <Button to="/demo" variant="light" size="lg">
+                Probar PEVLYN
               </Button>
               <Button {...whatsapp} variant="outlineLight" size="lg">
                 {hasWhatsApp() && <MessageCircle size={18} aria-hidden="true" />}

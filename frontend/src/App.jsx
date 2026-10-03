@@ -1,35 +1,34 @@
+import { Suspense, lazy } from 'react'
 import Navbar from './sections/Navbar.jsx'
-import Hero from './sections/Hero.jsx'
-import Problem from './sections/Problem.jsx'
-import Answer from './sections/Answer.jsx'
-import Solutions from './sections/Solutions.jsx'
-import TryPevlyn from './sections/TryPevlyn.jsx'
-import Growth from './sections/Growth.jsx'
-import Agenda from './sections/Agenda.jsx'
-import UseCases from './sections/UseCases.jsx'
-import Process from './sections/Process.jsx'
-import WhyPevlyn from './sections/WhyPevlyn.jsx'
-import Projects from './sections/Projects.jsx'
-import Pricing from './sections/Pricing.jsx'
-import FAQ from './sections/FAQ.jsx'
-import FinalCTA from './sections/FinalCTA.jsx'
 import Footer from './sections/Footer.jsx'
+import HomePage from './pages/HomePage.jsx'
+import { RouterProvider, useRouter } from './lib/router.jsx'
 
 /**
- * La landing cuenta una historia, y el orden es el argumento:
- *
- *   problema → respuesta → soluciones → PROBARLO → producto → crecimiento
- *   → para quién → proceso → por qué → proyectos → precio → dudas → acción
- *
- * La V3 añade "Prueba PEVLYN" justo después de Soluciones: una vez que el
- * visitante entiende qué hacemos, lo siguiente es dejarle probarlo, no
- * seguir explicándoselo.
- *
- * El tono de fondo alterna a propósito (oscuro / claro / superficie) para dar
- * ritmo: las secciones oscuras marcan los momentos protagonistas —hero, la
- * idea central de crecimiento, por qué PEVLYN y el cierre—.
+ * Las páginas con las herramientas interactivas se cargan bajo demanda, de
+ * modo que quien entra a `/` no descarga el diagnóstico, el dashboard ni el
+ * constructor. Vite las separa en chunks propios automáticamente: cuesta dos
+ * líneas y es justo lo que mantiene ligera la portada.
  */
-export default function App() {
+const DemoPage = lazy(() => import('./pages/DemoPage.jsx'))
+const AgendaPage = lazy(() => import('./pages/AgendaPage.jsx'))
+
+const routes = {
+  '/': HomePage,
+  '/demo': DemoPage,
+  '/agenda': AgendaPage,
+}
+
+/** Reserva el alto del viewport mientras llega el chunk: evita el salto. */
+function PageFallback() {
+  return <div className="min-h-screen bg-ink" aria-busy="true" />
+}
+
+function Routes() {
+  const { pathname } = useRouter()
+  // Una ruta desconocida muestra la portada en lugar de una pantalla en blanco.
+  const Page = routes[pathname.replace(/\/+$/, '') || '/'] ?? HomePage
+
   return (
     <>
       <a
@@ -42,23 +41,20 @@ export default function App() {
       <Navbar />
 
       <main id="contenido">
-        <Hero />
-        <Problem />
-        <Answer />
-        <Solutions />
-        <TryPevlyn />
-        <Agenda />
-        <Growth />
-        <UseCases />
-        <Process />
-        <WhyPevlyn />
-        <Projects />
-        <Pricing />
-        <FAQ />
-        <FinalCTA />
+        <Suspense fallback={<PageFallback />}>
+          <Page />
+        </Suspense>
       </main>
 
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <RouterProvider>
+      <Routes />
+    </RouterProvider>
   )
 }
