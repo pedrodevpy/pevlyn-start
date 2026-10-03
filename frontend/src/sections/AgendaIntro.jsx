@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Section from '../components/Section.jsx'
 import Eyebrow from '../components/Eyebrow.jsx'
 import Reveal from '../components/Reveal.jsx'
@@ -36,14 +36,11 @@ export default function AgendaIntro() {
             organizarlos.
           </p>
 
-          <ul className="mt-8 grid w-full gap-x-6 gap-y-3 sm:grid-cols-2">
-            {agendaModules.map((module) => (
-              <li key={module.title} className="flex items-center gap-2.5">
-                <Check size={16} strokeWidth={2.6} aria-hidden="true" className="shrink-0 text-primary" />
-                <span className="text-sm text-text-muted">{module.title}</span>
-              </li>
-            ))}
-          </ul>
+          {/* Solo los nombres, en una línea: el detalle de cada módulo vive
+              en /agenda y repetirlo aquí era contar lo mismo dos veces. */}
+          <p className="mt-6 text-sm leading-relaxed text-text-subtle">
+            {agendaModules.map((m) => m.title).join(' · ')}
+          </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button to="/agenda" size="lg">

@@ -35,23 +35,22 @@ export default function DemoPreview() {
           pruebes ahora mismo, sin registrarte.
         </p>
 
-        <ul className="mt-10 grid w-full gap-3 sm:grid-cols-3">
+        <ul className="mt-9 flex flex-wrap justify-center gap-2.5">
           {highlights.map((item, i) => (
             <li
               key={item.label}
               style={{ animationDelay: `${i * 90}ms` }}
-              className="flex flex-col items-center gap-2.5 rounded-card bg-white/[0.04] px-5 py-6 ring-1 ring-white/10 motion-safe:animate-reveal"
+              className="flex items-center gap-2.5 rounded-full bg-white/[0.05] py-2 pl-2 pr-4 ring-1 ring-white/10 motion-safe:animate-reveal"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-brand text-white shadow-primary">
-                <item.icon size={20} strokeWidth={1.9} aria-hidden="true" />
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-brand text-white">
+                <item.icon size={16} strokeWidth={2} aria-hidden="true" />
               </span>
-              <span className="font-heading text-sm font-semibold text-white">{item.label}</span>
-              <span className="text-xs text-white/55">{item.description}</span>
+              <span className="font-sans text-sm font-semibold text-white">{item.label}</span>
             </li>
           ))}
         </ul>
 
-        <Button to="/demo" variant="light" size="lg" className="mt-10">
+        <Button to="/demo" variant="light" size="lg" className="mt-9">
           Explorar demo
           <ArrowRight size={18} aria-hidden="true" />
         </Button>

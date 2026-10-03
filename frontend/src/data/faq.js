@@ -1,19 +1,22 @@
-/** Preguntas frecuentes de la V2: cubren qué es PEVLYN y cómo se empieza. */
+/**
+ * Preguntas frecuentes.
+ *
+ * Solo las que aportan información que NO está en el resto de la página. La
+ * lista anterior tenía siete, pero seis repetían lo que ya dicen el hero,
+ * Soluciones o la sección de Agenda ("qué hace PEVLYN", "¿solo páginas web?",
+ * "¿puedo empezar con una landing?", "¿puedo crecer después?"…). Una FAQ
+ * sirve para resolver objeciones, no para volver a explicar la oferta.
+ */
 export const faqItems = [
   {
-    question: '¿Qué hace PEVLYN?',
+    question: '¿Necesito saber de tecnología?',
     answer:
-      'Construimos tecnología para pequeños negocios: desde la página web con la que empiezas a existir online, hasta sistemas y automatizaciones que organizan tu operación del día a día.',
+      'No. Nos encargamos de la parte técnica para que tú puedas enfocarte en atender a tus clientes. Si algo requiere que tomes una decisión, te lo explicamos sin tecnicismos.',
   },
   {
-    question: '¿PEVLYN solamente desarrolla páginas web?',
+    question: '¿PEVLYN trabaja con negocios pequeños?',
     answer:
-      'No. La página web suele ser el primer paso, porque es el más rápido de poner en marcha. A partir de ahí trabajamos organización de clientes y citas, automatización de tareas repetitivas y software a medida cuando el negocio lo necesita.',
-  },
-  {
-    question: '¿Puedo empezar con una landing?',
-    answer:
-      'Sí, y es lo más habitual. Empezar pequeño permite ver resultados pronto y decidir con criterio cuál es el siguiente paso, en lugar de comprometerse con todo de golpe.',
+      'Son nuestro foco. Barberías, salones, consultorios, gimnasios, profesionales independientes y emprendimientos locales: negocios que funcionan bien pero todavía hacen demasiadas cosas a mano.',
   },
   {
     question: '¿Pueden crear un sistema personalizado?',
@@ -23,16 +26,6 @@ export const faqItems = [
   {
     question: '¿Qué es PEVLYN Agenda?',
     answer:
-      'Es el primer producto propio de PEVLYN, actualmente en desarrollo. Una plataforma para negocios que trabajan con citas, donde gestionar clientes, servicios y agenda desde un solo lugar. Todavía no está disponible: si te interesa, escríbenos y te avisamos.',
-  },
-  {
-    question: '¿PEVLYN trabaja con pequeños negocios?',
-    answer:
-      'Son nuestro foco. Barberías, salones, consultorios, gimnasios, profesionales independientes y emprendimientos locales: negocios que funcionan bien pero todavía hacen demasiadas cosas a mano.',
-  },
-  {
-    question: '¿Puedo empezar pequeño y agregar más funcionalidades después?',
-    answer:
-      'Es precisamente cómo trabajamos. Cada solución se construye pensando en que pueda crecer, de modo que lo que hagas hoy siga sirviendo cuando necesites el siguiente paso.',
+      'Es nuestro primer producto propio, hoy en desarrollo: una plataforma para negocios que trabajan con citas. Puedes ver de qué se trata en su página o probar la demo interactiva.',
   },
 ]

@@ -13,10 +13,16 @@ import { Link, useRouter } from '../lib/router.jsx'
  * blanco); al hacer scroll pasa a fondo claro con blur. El menú móvil abierto
  * fuerza el estado claro para que siempre haya contraste suficiente.
  */
-/** Un enlace con ancla solo marca "activo" por su ruta, no por el ancla. */
+/**
+ * Solo los enlaces de ruta marcan página activa.
+ *
+ * Los que llevan ancla (`/#soluciones`) son saltos dentro de la página, no
+ * destinos: resolverlos a su ruta hacía que en `/` se marcaran activos a la
+ * vez Inicio, Soluciones, Nosotros y Contacto.
+ */
 function isActive(to, pathname) {
-  const path = to.split('#')[0] || '/'
-  return path === pathname
+  if (to.includes('#')) return false
+  return to === pathname
 }
 
 export default function Navbar() {
