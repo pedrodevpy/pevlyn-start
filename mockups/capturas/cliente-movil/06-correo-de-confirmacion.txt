@@ -1,0 +1,30 @@
+CORREO QUE RECIBE EL CLIENTE
+(capturado del envío real; en producción llega a su bandeja)
+
+────────────────────────────────────────────────────────────
+De:      PEVLYN Agenda <no-reply@pevlyn.com>
+Para:    daniel.cespedes@ejemplo.com
+Asunto:  Tu cita en Barbería Nórdica
+────────────────────────────────────────────────────────────
+
+Hola Daniel Céspedes,
+
+Tu cita en Barbería Nórdica quedó reservada.
+
+  Servicio    Corte y barba
+  Cuándo      Lunes 12 de octubre de 2026 a las 10:00
+  Profesional Andrés Pardo
+  Dónde       Calle 12 #4-30, Cúcuta
+
+La hora corresponde a la zona horaria del negocio (America/Bogota).
+
+Puedes consultar o cancelar tu cita desde este enlace:
+https://pevlyn.com/barberia-nordica/cita/1hGO6BZnTPY...
+
+Si no reservaste esta cita, ignora este mensaje.
+
+Barbería Nórdica
+────────────────────────────────────────────────────────────
+
+NOTA PARA EL MATERIAL: el enlace es la única llave del cliente.
+No necesita cuenta ni contraseña para consultar o cancelar.

@@ -32,7 +32,7 @@ export default function AgendaPage() {
         </div>
 
         <Container>
-          <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-16">
+          <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] lg:gap-16">
             <div className="flex flex-col items-start motion-safe:animate-reveal">
               <StatusBadge tone="soon">En desarrollo</StatusBadge>
 
