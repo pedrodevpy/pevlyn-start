@@ -1,71 +1,213 @@
 /**
- * Datos de la demo de PEVLYN Agenda.
+ * Datos oficiales de la demo PEVLYN Agenda — Caso: Barbería Nórdica.
  *
- * ⚠️ TODO ES FICTICIO. Nombres, teléfonos y precios son inventados a propósito
- * para ilustrar la interfaz. No son clientes reales ni tarifas oficiales, y la
- * UI lo indica de forma visible ("Datos de demostración").
+ * ⚠️ Basado en los mockups reales de mockups/capturas/.
+ * Los datos son ficticios con fines de demostración interactiva.
  */
 
+export const businessInfo = {
+  name: 'Barbería Nórdica',
+  slug: 'barberia-nordica',
+  url: 'pevlyn.com/barberia-nordica',
+  owner: 'Camilo Restrepo',
+  ownerEmail: 'demo@pevlyn.test',
+  role: 'OWNER',
+  address: 'Calle 12 #4-30, Cúcuta',
+  phone: '+57 300 123 4567',
+  timezone: 'America/Bogota',
+  date: 'miércoles, 7 de octubre',
+  dateFormatted: '07/10/2026',
+  description: 'Barbería de barrio con cita previa. Cortes clásicos, arreglo de barba y color. Atendemos de lunes a sábado.',
+}
+
 export const demoServices = [
-  { id: 'corte', name: 'Corte', duration: '30 min', price: '$25.000', color: 'bg-primary' },
-  { id: 'corte-barba', name: 'Corte y barba', duration: '45 min', price: '$35.000', color: 'bg-accent' },
-  { id: 'color', name: 'Coloración', duration: '90 min', price: '$80.000', color: 'bg-primary-dark' },
-  { id: 'peinado', name: 'Peinado', duration: '40 min', price: '$30.000', color: 'bg-accent' },
+  {
+    id: 'barba',
+    name: 'Arreglo de barba',
+    duration: '20 min',
+    durationMinutes: 20,
+    price: '$ 18.000',
+    numericPrice: 18000,
+    color: '#7366fe',
+  },
+  {
+    id: 'corte',
+    name: 'Corte clásico',
+    duration: '30 min',
+    durationMinutes: 30,
+    price: '$ 28.000',
+    numericPrice: 28000,
+    color: '#6366f1',
+  },
+  {
+    id: 'corte-barba',
+    name: 'Corte y barba',
+    duration: '45 min',
+    durationMinutes: 45,
+    price: '$ 40.000',
+    numericPrice: 40000,
+    color: '#8b5cf6',
+  },
+  {
+    id: 'tinte',
+    name: 'Tinte',
+    duration: '90 min',
+    durationMinutes: 90,
+    price: '$ 95.000',
+    numericPrice: 95000,
+    color: '#a855f7',
+  },
+]
+
+export const demoProfessionals = [
+  { id: 'cualquiera', name: 'Cualquiera disponible', badge: 'Disponible' },
+  { id: 'camilo', name: 'Camilo Restrepo', colorHex: '#7366fe', badge: 'Barbero Principal' },
+  { id: 'andres', name: 'Andrés Pardo', colorHex: '#eab308', badge: 'Barbero' },
+]
+
+export const demoTimeSlots = [
+  '14:00',
+  '14:15',
+  '14:30',
+  '14:45',
+  '15:00',
+  '15:15',
+  '15:30',
+  '15:45',
+  '16:00',
+  '16:15',
+  '16:30',
+  '16:45',
+  '17:00',
+]
+
+export const initialAppointments = [
+  {
+    id: 'apt-1',
+    time: '08:30',
+    hour: 8.5,
+    durationMinutes: 20,
+    clientName: 'Mariana Ospina',
+    serviceName: 'Arreglo de barba',
+    professionalName: 'Camilo Restrepo',
+    proColor: '#7366fe',
+    price: '$ 18.000',
+    status: 'Confirmada',
+  },
+  {
+    id: 'apt-2',
+    time: '09:30',
+    hour: 9.5,
+    durationMinutes: 45,
+    clientName: 'Valentina Cárdenas',
+    serviceName: 'Corte y barba',
+    professionalName: 'Camilo Restrepo',
+    proColor: '#7366fe',
+    price: '$ 40.000',
+    status: 'Confirmada',
+  },
+  {
+    id: 'apt-3',
+    time: '10:00',
+    hour: 10,
+    durationMinutes: 30,
+    clientName: 'Julián Betancur',
+    serviceName: 'Corte clásico',
+    professionalName: 'Camilo Restrepo',
+    proColor: '#7366fe',
+    price: '$ 28.000',
+    status: 'Confirmada',
+    col: 0,
+    colSpan: 1,
+  },
+  {
+    id: 'apt-4',
+    time: '10:00',
+    hour: 10,
+    durationMinutes: 20,
+    clientName: 'Santiago Mejía',
+    serviceName: 'Arreglo de barba',
+    professionalName: 'Andrés Pardo',
+    proColor: '#eab308',
+    price: '$ 18.000',
+    status: 'Confirmada',
+    col: 1,
+    colSpan: 1,
+  },
+  {
+    id: 'apt-5',
+    time: '11:00',
+    hour: 11,
+    durationMinutes: 30,
+    clientName: 'Laura Quintero',
+    serviceName: 'Corte clásico',
+    professionalName: 'Camilo Restrepo',
+    proColor: '#7366fe',
+    price: '$ 28.000',
+    status: 'Confirmada',
+  },
+  {
+    id: 'apt-6',
+    time: '11:30',
+    hour: 11.5,
+    durationMinutes: 45,
+    clientName: 'Esteban Villa',
+    serviceName: 'Corte y barba',
+    professionalName: 'Andrés Pardo',
+    proColor: '#eab308',
+    price: '$ 40.000',
+    status: 'Confirmada',
+  },
+  {
+    id: 'apt-7',
+    time: '14:00',
+    hour: 14,
+    durationMinutes: 45,
+    clientName: 'Catalina Arango',
+    serviceName: 'Corte y barba',
+    professionalName: 'Camilo Restrepo',
+    proColor: '#7366fe',
+    price: '$ 40.000',
+    status: 'Confirmada',
+    col: 0,
+    colSpan: 1,
+  },
+  {
+    id: 'apt-8',
+    time: '14:30',
+    hour: 14.5,
+    durationMinutes: 30,
+    clientName: 'Nicolás Peña',
+    serviceName: 'Corte clásico',
+    professionalName: 'Andrés Pardo',
+    proColor: '#eab308',
+    price: '$ 28.000',
+    status: 'Confirmada',
+    col: 1,
+    colSpan: 1,
+  },
+  {
+    id: 'apt-9',
+    time: '15:30',
+    hour: 15.5,
+    durationMinutes: 20,
+    clientName: 'Isabela Rincón',
+    serviceName: 'Arreglo de barba',
+    professionalName: 'Andrés Pardo',
+    proColor: '#eab308',
+    price: '$ 18.000',
+    status: 'Confirmada',
+  },
 ]
 
 export const demoClients = [
-  { id: 'c1', name: 'María Restrepo', initials: 'MR', phone: '+57 300 000 0001', service: 'Coloración', lastVisit: '12 sep 2026', visits: 8 },
-  { id: 'c2', name: 'Laura Jiménez', initials: 'LJ', phone: '+57 300 000 0002', service: 'Corte y barba', lastVisit: '28 sep 2026', visits: 3 },
-  { id: 'c3', name: 'Carlos Mejía', initials: 'CM', phone: '+57 300 000 0003', service: 'Corte', lastVisit: '25 sep 2026', visits: 12 },
-  { id: 'c4', name: 'Ana Villalba', initials: 'AV', phone: '+57 300 000 0004', service: 'Peinado', lastVisit: '19 sep 2026', visits: 5 },
-  { id: 'c5', name: 'Diego Sarmiento', initials: 'DS', phone: '+57 300 000 0005', service: 'Corte', lastVisit: '02 sep 2026', visits: 2 },
+  { id: 'c1', name: 'Mariana Ospina', phone: '+57 301 234 5678', email: 'mariana.ospina@ejemplo.com', visits: 6, lastService: 'Arreglo de barba' },
+  { id: 'c2', name: 'Valentina Cárdenas', phone: '+57 310 987 6543', email: 'valentina.c@ejemplo.com', visits: 3, lastService: 'Corte y barba' },
+  { id: 'c3', name: 'Julián Betancur', phone: '+57 312 456 7890', email: 'julian.b@ejemplo.com', visits: 8, lastService: 'Corte clásico' },
+  { id: 'c4', name: 'Santiago Mejía', phone: '+57 315 678 1234', email: 'santiago.m@ejemplo.com', visits: 4, lastService: 'Arreglo de barba' },
+  { id: 'c5', name: 'Laura Quintero', phone: '+57 320 123 4567', email: 'laura.q@ejemplo.com', visits: 2, lastService: 'Corte clásico' },
+  { id: 'c6', name: 'Esteban Villa', phone: '+57 300 890 1234', email: 'esteban.v@ejemplo.com', visits: 5, lastService: 'Corte y barba' },
+  { id: 'c7', name: 'Catalina Arango', phone: '+57 311 234 5678', email: 'catalina.a@ejemplo.com', visits: 9, lastService: 'Corte y barba' },
+  { id: 'c8', name: 'Nicolás Peña', phone: '+57 302 345 6789', email: 'nicolas.p@ejemplo.com', visits: 4, lastService: 'Corte clásico' },
+  { id: 'c9', name: 'Isabela Rincón', phone: '+57 314 567 8901', email: 'isabela.r@ejemplo.com', visits: 7, lastService: 'Arreglo de barba' },
 ]
-
-/** Citas por rango. Cada cita referencia un cliente y un servicio de arriba. */
-export const demoAppointments = {
-  hoy: [
-    { id: 'a1', time: '09:00', clientId: 'c1', serviceId: 'color', status: 'Confirmada' },
-    { id: 'a2', time: '10:30', clientId: 'c2', serviceId: 'corte-barba', status: 'Confirmada' },
-    { id: 'a3', time: '12:00', clientId: 'c3', serviceId: 'corte', status: 'Pendiente' },
-    { id: 'a4', time: '15:30', clientId: 'c4', serviceId: 'peinado', status: 'Confirmada' },
-  ],
-  semana: [
-    { id: 'b1', time: 'Lun 09:00', clientId: 'c1', serviceId: 'color', status: 'Confirmada' },
-    { id: 'b2', time: 'Mar 11:00', clientId: 'c5', serviceId: 'corte', status: 'Confirmada' },
-    { id: 'b3', time: 'Mié 16:00', clientId: 'c3', serviceId: 'corte', status: 'Pendiente' },
-    { id: 'b4', time: 'Jue 10:30', clientId: 'c2', serviceId: 'corte-barba', status: 'Confirmada' },
-    { id: 'b5', time: 'Vie 14:00', clientId: 'c4', serviceId: 'peinado', status: 'Cancelada' },
-  ],
-  mes: [
-    { id: 'm1', time: 'Sem 1', clientId: 'c1', serviceId: 'color', status: 'Confirmada' },
-    { id: 'm2', time: 'Sem 2', clientId: 'c3', serviceId: 'corte', status: 'Confirmada' },
-    { id: 'm3', time: 'Sem 3', clientId: 'c2', serviceId: 'corte-barba', status: 'Confirmada' },
-    { id: 'm4', time: 'Sem 4', clientId: 'c4', serviceId: 'peinado', status: 'Pendiente' },
-  ],
-}
-
-export const demoRanges = [
-  { id: 'hoy', label: 'Hoy' },
-  { id: 'semana', label: 'Semana' },
-  { id: 'mes', label: 'Mes' },
-]
-
-/** Resumen calculado a partir de las citas del rango: nunca cifras sueltas. */
-export function demoSummary(rangeId) {
-  const list = demoAppointments[rangeId] ?? []
-  const pendientes = list.filter((a) => a.status === 'Pendiente').length
-  const clientes = new Set(list.map((a) => a.clientId)).size
-  const servicios = new Set(list.map((a) => a.serviceId)).size
-  return [
-    { id: 'citas', label: 'Citas', value: list.length },
-    { id: 'clientes', label: 'Clientes', value: clientes },
-    { id: 'servicios', label: 'Servicios', value: servicios },
-    { id: 'pendientes', label: 'Pendientes', value: pendientes },
-  ]
-}
-
-export const statusTone = {
-  Confirmada: 'bg-emerald-500/15 text-emerald-300 ring-emerald-400/25',
-  Pendiente: 'bg-amber-500/15 text-amber-300 ring-amber-400/25',
-  Cancelada: 'bg-rose-500/15 text-rose-300 ring-rose-400/25',
-}

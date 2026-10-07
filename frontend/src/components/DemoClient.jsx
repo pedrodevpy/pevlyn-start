@@ -6,13 +6,13 @@ export default function DemoClient({ client, onClose }) {
 
   const rows = [
     { label: 'Teléfono', value: client.phone },
-    { label: 'Servicio habitual', value: client.service },
-    { label: 'Última cita', value: client.lastVisit },
-    { label: 'Visitas', value: client.visits },
+    { label: 'Correo', value: client.email || '—' },
+    { label: 'Último servicio', value: client.lastService || client.service || 'Corte clásico' },
+    { label: 'Visitas totales', value: `${client.visits} citas` },
   ]
 
   return (
-    <Modal open onClose={onClose} title={client.name} subtitle="Datos de demostración">
+    <Modal open onClose={onClose} title={client.name} subtitle="Barbería Nórdica — Cliente">
       <dl className="flex flex-col divide-y divide-border">
         {rows.map((row) => (
           <div key={row.label} className="flex items-center justify-between gap-4 py-3">

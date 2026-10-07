@@ -16,14 +16,16 @@ export default function DemoAppointment({ appointment, onClose }) {
   const service = demoServices.find((s) => s.id === appointment.serviceId)
 
   const rows = [
-    { label: 'Cliente', value: client?.name },
-    { label: 'Servicio', value: service?.name },
-    { label: 'Duración', value: service?.duration },
+    { label: 'Cliente', value: appointment.clientName || client?.name },
+    { label: 'Servicio', value: appointment.serviceName || service?.name },
+    { label: 'Profesional', value: appointment.professionalName || 'Camilo Restrepo' },
+    { label: 'Duración', value: appointment.duration || service?.duration },
+    { label: 'Precio', value: appointment.price || service?.price },
     { label: 'Hora', value: appointment.time },
   ]
 
   return (
-    <Modal open onClose={onClose} title="Detalle de la cita" subtitle="Datos de demostración">
+    <Modal open onClose={onClose} title="Detalle de la cita" subtitle="Barbería Nórdica — Demo">
       <dl className="flex flex-col divide-y divide-border">
         {rows.map((row) => (
           <div key={row.label} className="flex items-center justify-between gap-4 py-3">
