@@ -102,7 +102,7 @@ export default function HeroMockup() {
         </div>
       </div>
 
-      <figcaption className="mt-4 text-center text-xs text-white/55">
+      <figcaption className="mt-3 text-center text-xs text-fog">
         Interfaz de ejemplo. Los datos mostrados son ilustrativos.
       </figcaption>
     </figure>

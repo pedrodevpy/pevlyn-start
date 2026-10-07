@@ -52,19 +52,19 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
-        solid
-          ? 'border-b border-border bg-white/85 backdrop-blur-xl'
-          : 'border-b border-transparent bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-200 ${
+        scrolled
+          ? 'border-b border-warm-linen bg-white/95 shadow-sm backdrop-blur-md'
+          : 'border-b border-warm-linen/80 bg-white/85 backdrop-blur-md'
       }`}
     >
-      <Container className="flex h-18 items-center justify-between gap-4 py-4">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Link to="/" className="shrink-0" aria-label="PEVLYN — inicio">
-          <Logo size="md" tone={solid ? 'dark' : 'light'} />
+          <Logo size="md" tone="dark" />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-0.5">
+          <ul className="flex items-center gap-1">
             {navLinks.map((link) => {
               const active = isActive(link.to, pathname)
               return (
@@ -72,14 +72,10 @@ export default function Navbar() {
                   <Link
                     to={link.to}
                     aria-current={active ? 'page' : undefined}
-                    className={`inline-flex h-10 items-center rounded-full px-3 font-sans text-sm font-medium transition-colors ${
-                      solid
-                        ? active
-                          ? 'bg-primary-soft text-primary-dark'
-                          : 'text-text-muted hover:bg-surface hover:text-ink'
-                        : active
-                          ? 'bg-white/15 text-white'
-                          : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    className={`inline-flex h-9 items-center rounded-full px-3.5 font-sans text-sm tracking-[0.05em] transition-colors ${
+                      active
+                        ? 'bg-lavender-mist/35 font-semibold text-periwinkle'
+                        : 'font-normal text-ink/80 hover:bg-warm-linen hover:text-periwinkle'
                     }`}
                   >
                     {link.label}
@@ -90,11 +86,9 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-          {/* El wrapper controla la visibilidad: aplicar `hidden` sobre el
-              Button chocaría con el `inline-flex` de su clase base. */}
+        <div className="flex items-center gap-3">
           <span className="hidden sm:block">
-            <Button to={navCta.to} size="sm" variant={solid ? 'primary' : 'light'}>
+            <Button to={navCta.to} size="sm" variant="primary" className="rounded-xl">
               {navCta.label}
             </Button>
           </span>
@@ -105,29 +99,27 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="menu-movil"
             aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden ${
-              solid ? 'text-ink hover:bg-surface' : 'text-white hover:bg-white/10'
-            }`}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-warm-linen lg:hidden"
           >
-            {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
         </div>
       </Container>
 
-      <div id="menu-movil" hidden={!open} className="border-t border-border bg-white lg:hidden">
+      <div id="menu-movil" hidden={!open} className="border-t border-warm-linen bg-white shadow-xl lg:hidden">
         <Container className="py-4">
           <nav aria-label="Principal móvil">
-            <ul className="flex flex-col">
+            <ul className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
                     onClick={() => setOpen(false)}
                     aria-current={isActive(link.to, pathname) ? 'page' : undefined}
-                    className={`block rounded-xl px-3 py-3.5 font-sans text-base font-medium transition-colors ${
+                    className={`block rounded-xl px-3 py-3 font-sans text-base transition-colors ${
                       isActive(link.to, pathname)
-                        ? 'bg-primary-soft text-primary-dark'
-                        : 'text-ink hover:bg-surface'
+                        ? 'bg-lavender-mist/35 font-semibold text-periwinkle'
+                        : 'font-normal text-ink hover:bg-warm-linen'
                     }`}
                   >
                     {link.label}

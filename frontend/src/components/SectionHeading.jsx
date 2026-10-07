@@ -25,11 +25,11 @@ export default function SectionHeading({
           <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
         </span>
       )}
-      <Tag id={id} className={`text-3xl leading-[1.15] sm:text-4xl lg:text-[2.75rem] ${titleColor}`}>
+      <Tag id={id} className={`font-heading text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-[3.25rem] ${titleColor}`}>
         {title}
       </Tag>
       {description && (
-        <p className={`text-base leading-relaxed sm:text-lg ${descColor}`}>{description}</p>
+        <p className={`font-sans text-base font-light leading-relaxed sm:text-lg ${descColor}`}>{description}</p>
       )}
     </div>
   )

@@ -15,12 +15,12 @@ const base =
 
 const variants = {
   primary:
-    'bg-primary text-white shadow-primary hover:bg-primary-dark hover:shadow-lift',
+    'bg-primary text-white shadow-lift hover:bg-primary-dark hover:shadow-xl',
   secondary:
-    'bg-white text-ink ring-1 ring-border-strong hover:ring-primary hover:text-primary',
-  ghost: 'text-ink hover:bg-surface-strong',
+    'bg-white text-ink ring-1 ring-linen-stone hover:ring-primary hover:text-primary shadow-sm',
+  ghost: 'text-ink hover:bg-warm-linen hover:text-primary',
   light:
-    'bg-white text-ink hover:bg-primary-soft hover:text-primary-dark shadow-lift',
+    'bg-white text-ink hover:bg-warm-linen hover:text-primary shadow-lift',
   outlineLight:
     'text-white ring-1 ring-white/30 hover:bg-white/10 hover:ring-white/60',
 }

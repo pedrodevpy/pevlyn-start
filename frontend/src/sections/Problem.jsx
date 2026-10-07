@@ -20,20 +20,20 @@ export default function Problem() {
         description="Casi ningún negocio se rompe de golpe. Se va llenando de pequeños procesos manuales que un día dejan de sostenerse."
       />
 
-      <ul className="mt-14 grid gap-px overflow-hidden rounded-xl2 bg-border ring-1 ring-border sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {/* Solo los cuatro principales: la portada resume, no inventaría. */}
         {problems.slice(0, 4).map((problem, i) => (
           <Reveal
             as="li"
             key={problem.title}
             delay={(i % 4) * 80}
-            className="group bg-white p-7 transition-colors duration-300 hover:bg-primary-softer"
+            className="group flex flex-col rounded-[32px] bg-white p-7 sm:p-8 shadow-card ring-1 ring-black/[0.04] transition-all duration-300 motion-safe:hover:-translate-y-1 hover:shadow-xl"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-primary ring-1 ring-border transition-colors duration-300 group-hover:bg-white">
-              <problem.icon size={19} strokeWidth={1.9} aria-hidden="true" />
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-lavender-mist/35 text-periwinkle transition-colors duration-300 group-hover:bg-periwinkle group-hover:text-white">
+              <problem.icon size={20} strokeWidth={1.9} aria-hidden="true" />
             </span>
-            <h3 className="mt-5 text-base text-ink">{problem.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-muted">{problem.description}</p>
+            <h3 className="mt-6 font-heading text-lg font-bold text-ink">{problem.title}</h3>
+            <p className="mt-2.5 font-sans text-sm font-light leading-relaxed text-ink/75">{problem.description}</p>
           </Reveal>
         ))}
       </ul>
