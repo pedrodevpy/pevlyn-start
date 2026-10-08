@@ -51,7 +51,7 @@ export const agendaSubscriptionPlans = [
       { text: 'Habeas Data (Ley 1581) integrado' },
     ],
     cta: 'Empezar gratis',
-    whatsappMessage: 'Hola PEVLYN 👋 Quiero empezar con el plan Gratis de PEVLYN Agenda para mi negocio.',
+    whatsappMessage: 'Hola PEVLYN 💜 Quiero empezar con el plan Gratis de PEVLYN Agenda para mi negocio.',
   },
   {
     id: 'basico',
@@ -79,7 +79,7 @@ export const agendaSubscriptionPlans = [
       { text: 'Acompañamiento en la puesta en marcha' },
     ],
     cta: 'Elegir Básico',
-    whatsappMessage: 'Hola PEVLYN 👋 Me gustaría activar el plan Básico de PEVLYN Agenda ($39.900 al mes).',
+    whatsappMessage: 'Hola PEVLYN 💜 Me gustaría activar el plan Básico de PEVLYN Agenda ($39.900 al mes).',
   },
   {
     id: 'pro',
@@ -107,7 +107,7 @@ export const agendaSubscriptionPlans = [
       { text: 'Soporte prioritario y puesta en marcha personalizada' },
     ],
     cta: 'Elegir Pro',
-    whatsappMessage: 'Hola PEVLYN 👋 Quiero activar el plan Pro de PEVLYN Agenda ($69.900 al mes).',
+    whatsappMessage: 'Hola PEVLYN 💜 Quiero activar el plan Pro de PEVLYN Agenda ($69.900 al mes).',
   },
 ]
 
@@ -131,8 +131,8 @@ export const agendaSubscriptionPerks = [
       'Tu suscripción se maneja mes a mes. Puedes pausar o cancelar cuando lo decidas. Tu base de clientes y datos son 100% de tu negocio y exportables en cualquier momento.',
   },
   {
-    title: 'Activación y acompañamiento directo',
+    title: 'Te ayudamos a iniciar',
     description:
-      'Te ayudamos a registrar tu equipo, configurar tus horarios y subir tus servicios para que tu enlace de reservas quede listo en minutos vía WhatsApp.',
+      'El sistema es muy intuitivo y fácil de usar. Te acompañamos desde el primer momento para que tú y tu equipo comiencen a agendar sin complicaciones.',
   },
 ]

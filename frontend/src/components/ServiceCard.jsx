@@ -31,7 +31,7 @@ export default function ServiceCard({ service }) {
       className={[
         'flex h-full flex-col rounded-xl2 p-7 transition duration-300 sm:p-8',
         highlighted
-          ? 'bg-ink text-white ring-1 ring-primary/40 shadow-lift lg:-my-3 lg:py-10'
+          ? 'bg-ink text-white ring-1 ring-primary/40 shadow-lift'
           : 'bg-white text-ink ring-1 ring-border motion-safe:hover:-translate-y-1 hover:shadow-lift',
       ].join(' ')}
     >

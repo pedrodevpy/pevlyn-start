@@ -21,7 +21,7 @@ import { useCases } from '../data/useCases.js'
  * conocer → probar → contactar.
  */
 const AGENDA_WHATSAPP =
-  'Hola PEVLYN 👋 Me interesa PEVLYN Agenda y me gustaría saber cuándo estará disponible.'
+  'Hola PEVLYN 💜 Me interesa PEVLYN Agenda y me gustaría saber cuándo estará disponible.'
 
 export default function AgendaPage() {
   return (

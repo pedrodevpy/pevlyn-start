@@ -89,7 +89,7 @@ export function builderWhatsAppMessage({ goals, tools }) {
   if (goalLabels.length) parts.push(`trabajar en ${listToText(goalLabels)}`)
   if (toolLabels.length) parts.push(`con ${listToText(toolLabels)}`)
   const detail = parts.length ? ` Me interesa ${parts.join(' ')}.` : ''
-  return `Hola PEVLYN 👋 Estoy interesado en una solución para mi negocio.${detail}`
+  return `Hola PEVLYN 💜 Estoy interesado en una solución para mi negocio.${detail}`
 }
 
 function listToText(items) {

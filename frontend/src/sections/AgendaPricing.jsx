@@ -51,7 +51,7 @@ export default function AgendaPricing() {
                 className={[
                   'relative flex h-full flex-col rounded-xl2 p-7 transition duration-300 sm:p-8',
                   highlighted
-                    ? 'bg-ink text-white ring-2 ring-primary/60 shadow-xl lg:-my-4 lg:py-11'
+                    ? 'bg-ink text-white ring-2 ring-primary/60 shadow-xl'
                     : 'bg-white text-ink ring-1 ring-border motion-safe:hover:-translate-y-1 hover:shadow-lift',
                 ].join(' ')}
               >
@@ -243,10 +243,10 @@ export default function AgendaPricing() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
           <p className="text-xs text-text-subtle">
-            Para activar tu suscripción o cambiar de plan, te acompañamos por WhatsApp en la configuración de tu negocio.
+            El sistema es muy intuitivo. Para iniciar o resolver cualquier duda sobre los planes, te acompañamos directamente por WhatsApp.
           </p>
           <Button
-            {...whatsAppLinkProps('Hola PEVLYN 👋 Tengo preguntas sobre los planes de suscripción de PEVLYN Agenda.')}
+            {...whatsAppLinkProps('Hola PEVLYN 💜 Tengo preguntas sobre los planes de suscripción de PEVLYN Agenda.')}
             variant="ghost"
             size="sm"
             className="shrink-0 text-primary hover:text-primary-dark"
