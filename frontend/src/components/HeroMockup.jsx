@@ -1,109 +1,97 @@
-import { CalendarDays, Users, CircleDot } from 'lucide-react'
-import isotipo from '../assets/pevlyn-isotipo.webp'
+import { useState } from 'react'
+import agendaDiaImg from '../assets/capturas/agenda-dia.jpg'
+import resumenDiaImg from '../assets/capturas/resumen-dia.jpg'
+import clienteReservaImg from '../assets/capturas/cliente-reserva.jpg'
 
 /**
- * Mockup de producto del Hero.
+ * Mockup auténtico de PEVLYN Agenda en el Hero de Inicio.
  *
- * ⚠️ Los datos son FICTICIOS: ilustran cómo se ve una interfaz de PEVLYN, no
- * son métricas de la empresa ni de ningún cliente. Por eso la tarjeta lleva
- * un rótulo visible y no se anima ninguna cifra (animar números sugeriría
- * que son reales).
+ * Muestra la interfaz real del producto (Barbería Nórdica)
+ * con alternancia entre la vista de Agenda diaria y el Resumen del día,
+ * además de la miniatura del flujo de reserva móvil para clientes.
  */
-
-const stats = [
-  { icon: CalendarDays, label: 'Citas', value: '24' },
-  { icon: Users, label: 'Clientes', value: '18' },
-  { icon: CircleDot, label: 'Pendientes', value: '7' },
-]
-
-const appointments = [
-  { time: '09:00', name: 'María', service: 'Corte y peinado', initials: 'M' },
-  { time: '10:30', name: 'Laura', service: 'Coloración', initials: 'L' },
-  { time: '12:00', name: 'Carlos', service: 'Corte', initials: 'C' },
-]
-
 export default function HeroMockup() {
+  const [tab, setTab] = useState('agenda') // 'agenda' | 'resumen'
+
   return (
     <figure className="relative m-0 w-full">
-      {/* Halo detrás del panel */}
+      {/* Halo de profundidad detrás de la tarjeta */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-primary/20 blur-3xl"
+        className="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-primary/20 blur-3xl"
       />
 
-      <div className="overflow-hidden rounded-xl2 bg-ink-raised shadow-glow ring-1 ring-white/10">
-        {/* Cabecera de la app */}
-        <div className="flex items-center justify-between gap-3 border-b border-white/8 px-5 py-4">
-          <span className="flex items-center gap-2.5">
-            <img src={isotipo} alt="" aria-hidden="true" className="h-5 w-auto" />
-            <span className="font-heading text-sm font-bold tracking-tight text-white">
-              PEVLYN
+      <div className="overflow-hidden rounded-[26px] bg-ink-raised shadow-glow ring-1 ring-white/10 sm:rounded-[30px]">
+        {/* Barra superior estilo ventana de aplicación */}
+        <div className="flex items-center justify-between border-b border-white/8 bg-white/[0.03] px-4 py-2.5 sm:px-5">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+            <span className="ml-2 font-mono text-[0.65rem] text-white/45 sm:text-xs">
+              app.pevlyn.com · Barbería Nórdica
             </span>
-          </span>
-          <span className="rounded-full bg-white/8 px-2.5 py-1 text-[0.65rem] font-semibold text-white/60">
-            Hoy
-          </span>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setTab('agenda')}
+              className={`rounded-lg px-2.5 py-1 text-[0.68rem] font-semibold transition ${
+                tab === 'agenda'
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Agenda
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab('resumen')}
+              className={`rounded-lg px-2.5 py-1 text-[0.68rem] font-semibold transition ${
+                tab === 'resumen'
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Resumen
+            </button>
+          </div>
         </div>
 
-        <div className="p-5">
-          {/* Indicadores del día */}
-          <dl className="grid grid-cols-3 gap-2.5">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-xl bg-white/[0.04] px-3 py-3.5 ring-1 ring-white/8"
-              >
-                <s.icon
-                  size={15}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                  className="mb-2 text-accent-on-dark"
-                />
-                <dd className="font-heading text-xl font-bold tracking-tight text-white">
-                  {s.value}
-                </dd>
-                <dt className="mt-0.5 text-[0.68rem] font-medium text-white/50">{s.label}</dt>
-              </div>
-            ))}
-          </dl>
+        {/* Captura real del producto */}
+        <div className="relative bg-[#f5f3f2] p-2 sm:p-3">
+          <img
+            src={tab === 'agenda' ? agendaDiaImg : resumenDiaImg}
+            alt={
+              tab === 'agenda'
+                ? 'Interfaz real de PEVLYN Agenda — Calendario diario con citas simultáneas'
+                : 'Interfaz real de PEVLYN Agenda — Resumen del día y métricas'
+            }
+            width="800"
+            height="500"
+            className="w-full rounded-xl object-cover shadow-sm ring-1 ring-black/5 sm:rounded-2xl"
+            loading="eager"
+          />
 
-          {/* Próximas citas */}
-          <p className="mt-6 flex items-center justify-between">
-            <span className="font-heading text-xs font-semibold uppercase tracking-[0.14em] text-white/50">
-              Próximas citas
+          {/* Miniatura móvil flotante */}
+          <div className="absolute -bottom-3 -right-2 hidden w-28 overflow-hidden rounded-2xl bg-white p-1 shadow-2xl ring-2 ring-primary/40 transition-transform duration-300 hover:scale-105 sm:block sm:w-36">
+            <img
+              src={clienteReservaImg}
+              alt="Reserva móvil para clientes"
+              width="400"
+              height="800"
+              className="w-full rounded-xl object-cover"
+            />
+            <span className="mt-1 block text-center text-[0.58rem] font-bold text-ink">
+              📱 Reserva cliente
             </span>
-          </p>
-
-          <ul className="mt-3 flex flex-col gap-2">
-            {appointments.map((a, i) => (
-              <li
-                key={a.time}
-                className="flex items-center gap-3 rounded-xl bg-white/[0.04] px-3 py-2.5 ring-1 ring-white/8 motion-safe:animate-reveal"
-                style={{ animationDelay: `${420 + i * 130}ms` }}
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-xs font-bold text-white"
-                >
-                  {a.initials}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-white">
-                    {a.name}
-                  </span>
-                  <span className="block truncate text-[0.7rem] text-white/50">{a.service}</span>
-                </span>
-                <span className="shrink-0 font-sans text-xs font-semibold tabular-nums text-white/70">
-                  {a.time}
-                </span>
-              </li>
-            ))}
-          </ul>
+          </div>
         </div>
       </div>
 
-      <figcaption className="mt-3 text-center text-xs text-fog">
-        Interfaz de ejemplo. Los datos mostrados son ilustrativos.
+      <figcaption className="mt-4 text-center text-xs text-fog">
+        Interfaz real de PEVLYN Agenda — Barbería Nórdica en funcionamiento.
       </figcaption>
     </figure>
   )

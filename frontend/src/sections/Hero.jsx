@@ -53,7 +53,7 @@ export default function Hero() {
         </div>
 
         {/* Mockup flotante sobre la superficie (32px radius + soft shadow) */}
-        <div className="mx-auto mt-14 max-w-3xl motion-safe:animate-reveal [animation-delay:180ms] sm:mt-18">
+        <div className="mx-auto mt-14 max-w-4xl motion-safe:animate-reveal [animation-delay:180ms] sm:mt-18">
           <div className="rounded-[32px] bg-white p-2 sm:p-3.5 shadow-xl ring-1 ring-black/[0.04] transition-transform duration-300 hover:-translate-y-0.5">
             <HeroMockup />
           </div>
