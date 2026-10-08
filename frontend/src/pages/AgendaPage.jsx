@@ -8,6 +8,7 @@ import StatusBadge from '../components/StatusBadge.jsx'
 import AgendaPreview from '../components/AgendaPreview.jsx'
 import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import UseCaseCard from '../components/UseCaseCard.jsx'
+import AgendaPricing from '../sections/AgendaPricing.jsx'
 import { agendaModules, agendaStatus } from '../data/agenda.js'
 import { useCases } from '../data/useCases.js'
 
@@ -92,7 +93,7 @@ export default function AgendaPage() {
       </Section>
 
       {/* Para quién */}
-      <Section tone="surface" labelledBy="para-quien-title">
+      <Section labelledBy="para-quien-title">
         <SectionHeading
           id="para-quien-title"
           eyebrow="Para quién"
@@ -112,6 +113,9 @@ export default function AgendaPage() {
           Ejemplos de aplicación por sector. No representan clientes actuales de PEVLYN.
         </p>
       </Section>
+
+      {/* Planes y suscripciones */}
+      <AgendaPricing />
 
       {/* Cierre */}
       <Section tone="dark" glow>

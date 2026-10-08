@@ -8,6 +8,7 @@
 export const navLinks = [
   { label: 'Inicio', to: '/' },
   { label: 'Soluciones', to: '/#soluciones' },
+  { label: 'Servicios', to: '/#servicios' },
   { label: 'Demo', to: '/demo' },
   { label: 'PEVLYN Agenda', to: '/agenda' },
   { label: 'Nosotros', to: '/#nosotros' },
