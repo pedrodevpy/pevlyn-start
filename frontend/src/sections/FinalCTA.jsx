@@ -15,7 +15,7 @@ import { hasWhatsApp } from '../config/site.js'
  */
 export default function FinalCTA() {
   const whatsapp = whatsAppLinkProps(
-    'Hola PEVLYN, quiero mejorar un proceso de mi negocio.',
+    '¡Hola PEVLYN! Quiero asesorarme para digitalizar y mejorar los procesos de mi negocio.',
   )
 
   return (

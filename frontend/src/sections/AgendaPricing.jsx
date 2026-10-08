@@ -246,7 +246,9 @@ export default function AgendaPricing() {
             El sistema es muy intuitivo. Para iniciar o resolver cualquier duda sobre los planes, te acompañamos directamente por WhatsApp.
           </p>
           <Button
-            {...whatsAppLinkProps('Hola PEVLYN 💜 Tengo preguntas sobre los planes de suscripción de PEVLYN Agenda.')}
+            {...whatsAppLinkProps(
+              '¡Hola PEVLYN! Tengo algunas preguntas sobre los planes de suscripción de PEVLYN Agenda y me gustaría asesorarme.',
+            )}
             variant="ghost"
             size="sm"
             className="shrink-0 text-primary hover:text-primary-dark"

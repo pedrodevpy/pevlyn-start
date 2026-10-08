@@ -7,7 +7,7 @@ import { whatsAppHref } from './whatsapp.js'
  * Esta v0.1 no tiene backend (LANDING_DEVELOPMENT.md §9 y §26). El transporte
  * se resuelve en runtime según los canales configurados en config/site.js:
  *
- *   1. WhatsApp  — abre wa.me con el mensaje ya redactado.
+ *   1. WhatsApp  — abre WhatsApp con el mensaje ya redactado.
  *   2. mailto    — si hay correo oficial pero no WhatsApp.
  *   3. unconfigured — todavía no hay canal oficial: la UI lo comunica
  *      explícitamente en lugar de fingir un envío exitoso.
@@ -44,16 +44,16 @@ export async function submitLead(lead) {
   }
 }
 
-/** Convierte el lead en un mensaje legible para WhatsApp o correo. */
+/** Convierte el lead en un mensaje legible y ordenado para WhatsApp o correo. */
 export function formatLeadMessage(lead) {
   return [
-    'Hola PEVLYN, quiero digitalizar mi negocio.',
+    '¡Hola PEVLYN! Dejé mis datos a través del formulario de contacto:',
     '',
-    `Nombre: ${lead.name}`,
-    `Negocio: ${lead.businessName}`,
-    `WhatsApp: ${lead.whatsapp}`,
-    `Correo: ${lead.email}`,
-    `Tipo de negocio: ${lead.businessType}`,
-    `Necesito: ${lead.need}`,
+    `• Nombre: ${lead.name}`,
+    `• Negocio: ${lead.businessName}`,
+    `• WhatsApp: ${lead.whatsapp}`,
+    `• Correo: ${lead.email}`,
+    `• Tipo de negocio: ${lead.businessType}`,
+    `• Necesidad: ${lead.need}`,
   ].join('\n')
 }

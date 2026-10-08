@@ -51,7 +51,8 @@ export const agendaSubscriptionPlans = [
       { text: 'Habeas Data (Ley 1581) integrado' },
     ],
     cta: 'Empezar gratis',
-    whatsappMessage: 'Hola PEVLYN 💜 Quiero empezar con el plan Gratis de PEVLYN Agenda para mi negocio.',
+    whatsappMessage:
+      '¡Hola PEVLYN! Me gustaría activar el plan Gratis de PEVLYN Agenda y comenzar a probarlo en mi negocio.',
   },
   {
     id: 'basico',
@@ -79,7 +80,8 @@ export const agendaSubscriptionPlans = [
       { text: 'Acompañamiento en la puesta en marcha' },
     ],
     cta: 'Elegir Básico',
-    whatsappMessage: 'Hola PEVLYN 💜 Me gustaría activar el plan Básico de PEVLYN Agenda ($39.900 al mes).',
+    whatsappMessage:
+      '¡Hola PEVLYN! Me gustaría activar el plan Básico de PEVLYN Agenda ($39.900 COP al mes) para mi negocio.',
   },
   {
     id: 'pro',
@@ -107,7 +109,8 @@ export const agendaSubscriptionPlans = [
       { text: 'Soporte prioritario y puesta en marcha personalizada' },
     ],
     cta: 'Elegir Pro',
-    whatsappMessage: 'Hola PEVLYN 💜 Quiero activar el plan Pro de PEVLYN Agenda ($69.900 al mes).',
+    whatsappMessage:
+      '¡Hola PEVLYN! Quiero activar el plan Pro de PEVLYN Agenda ($69.900 COP al mes) para mi negocio.',
   },
 ]
 

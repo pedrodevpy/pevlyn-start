@@ -162,7 +162,7 @@ export function diagnosticWhatsAppMessage({ top, businessLabel }) {
   const needs = top.map((n) => n.short).join(' y ')
   const business = businessLabel ? ` Tengo un negocio de ${businessLabel.toLowerCase()}` : ''
   return (
-    `Hola PEVLYN 💜 Hice el diagnóstico en su página.${business} y mi principal ` +
-    `necesidad es ${needs || 'mejorar la operación'}. Me gustaría conocer sus soluciones.`
+    `¡Hola PEVLYN! Completé el diagnóstico digital en su sitio web.${business}. Mi principal ` +
+    `necesidad es ${needs || 'mejorar y automatizar la operación'}. Me gustaría conocer sus recomendaciones.`
   )
 }

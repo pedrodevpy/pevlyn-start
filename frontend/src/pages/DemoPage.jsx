@@ -124,7 +124,7 @@ export default function DemoPage() {
                     a organizar mejor su día a día.
                   </p>
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <WhatsAppButton message="Hola PEVLYN 💜 Probé la demo de PEVLYN Agenda y me gustaría conocerla.">
+                    <WhatsAppButton message="¡Hola PEVLYN! Estuve probando la demo interactiva de PEVLYN Agenda y me gustaría conocer cómo implementarla en mi negocio.">
                       Quiero conocer PEVLYN Agenda
                     </WhatsAppButton>
                     <Button to="/agenda" variant="secondary">
@@ -154,7 +154,7 @@ export default function DemoPage() {
             <WhatsAppButton
               variant="light"
               size="lg"
-              message="Hola PEVLYN 💜 Estuve probando sus herramientas y me gustaría hablar de mi negocio."
+              message="¡Hola PEVLYN! Estuve probando las herramientas en su web y me gustaría hablar sobre las soluciones para mi negocio."
             >
               Hablemos de mi negocio
             </WhatsAppButton>

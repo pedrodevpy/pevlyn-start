@@ -25,7 +25,8 @@ export const servicesList = [
       'Conexión con dominio propio y Google Maps',
     ],
     cta: 'Cotizar presencia web',
-    whatsappMessage: 'Hola PEVLYN 💜 Me interesa cotizar una Landing Page o Sitio Web para mi negocio.',
+    whatsappMessage:
+      '¡Hola PEVLYN! Me gustaría cotizar el desarrollo de una Landing Page o Sitio Web para mi negocio.',
     highlighted: false,
   },
   {
@@ -47,7 +48,8 @@ export const servicesList = [
       'Puesta en marcha asistida por nuestro equipo',
     ],
     cta: 'Consultar sistema con agenda',
-    whatsappMessage: 'Hola PEVLYN 💜 Me interesa un sitio web con sistema de agenda para mi negocio.',
+    whatsappMessage:
+      '¡Hola PEVLYN! Me interesa cotizar un sitio web con sistema de reservas y agenda para mi negocio.',
     highlighted: true,
   },
   {
@@ -68,7 +70,8 @@ export const servicesList = [
       'Soporte técnico continuo y evolución de la plataforma',
     ],
     cta: 'Hablar de mi proyecto',
-    whatsappMessage: 'Hola PEVLYN 💜 Tengo un proyecto de desarrollo / software a medida y quiero consultarlo.',
+    whatsappMessage:
+      '¡Hola PEVLYN! Tengo un requerimiento de desarrollo de software o automatización a la medida para mi negocio.',
     highlighted: false,
   },
 ]

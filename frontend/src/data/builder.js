@@ -86,10 +86,10 @@ export function builderWhatsAppMessage({ goals, tools }) {
   const goalLabels = builderGoals.filter((g) => goals.includes(g.id)).map((g) => g.label.toLowerCase())
   const toolLabels = builderTools.filter((t) => tools.includes(t.id)).map((t) => t.label.toLowerCase())
   const parts = []
-  if (goalLabels.length) parts.push(`trabajar en ${listToText(goalLabels)}`)
-  if (toolLabels.length) parts.push(`con ${listToText(toolLabels)}`)
-  const detail = parts.length ? ` Me interesa ${parts.join(' ')}.` : ''
-  return `Hola PEVLYN 💜 Estoy interesado en una solución para mi negocio.${detail}`
+  if (goalLabels.length) parts.push(`enfocarme en ${listToText(goalLabels)}`)
+  if (toolLabels.length) parts.push(`utilizando ${listToText(toolLabels)}`)
+  const detail = parts.length ? ` En particular me gustaría ${parts.join(' ')}.` : ''
+  return `¡Hola PEVLYN! Diseñé una propuesta en su constructor interactivo y me gustaría cotizarla para mi negocio.${detail}`
 }
 
 function listToText(items) {
