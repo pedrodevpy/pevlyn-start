@@ -44,8 +44,10 @@ export function RouterProvider({ children }) {
       requestAnimationFrame(() => {
         document.querySelector(url.hash)?.scrollIntoView({ block: 'start' })
       })
-    } else if (!samePage) {
-      window.scrollTo(0, 0)
+    } else if (samePage) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
   }, [])
 

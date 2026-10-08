@@ -59,7 +59,16 @@ export default function Navbar() {
       }`}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="shrink-0" aria-label="PEVLYN — inicio">
+        <Link
+          to="/"
+          className="shrink-0"
+          aria-label="PEVLYN — inicio"
+          onClick={() => {
+            if (pathname === '/') {
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+            }
+          }}
+        >
           <Logo size="md" tone="dark" />
         </Link>
 
@@ -71,6 +80,11 @@ export default function Navbar() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
+                    onClick={() => {
+                      if (link.to === '/' && pathname === '/') {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                      }
+                    }}
                     aria-current={active ? 'page' : undefined}
                     className={`inline-flex h-9 items-center rounded-full px-3.5 font-sans text-sm tracking-[0.05em] transition-colors ${
                       active
@@ -114,7 +128,12 @@ export default function Navbar() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false)
+                      if (link.to === '/' && pathname === '/') {
+                        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                      }
+                    }}
                     aria-current={isActive(link.to, pathname) ? 'page' : undefined}
                     className={`block rounded-xl px-3 py-3 font-sans text-base transition-colors ${
                       isActive(link.to, pathname)
